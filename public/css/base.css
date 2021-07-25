@@ -1,0 +1,118 @@
+html {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+.border-radius-1 {
+	border-radius: 8px;
+}
+.border-radius-2 {
+	border-radius: 16px;
+}
+html {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+input,
+textarea,
+select,
+button {
+	outline: none;
+}
+input {
+	line-height: normal;
+}
+label,
+button {
+	cursor: pointer;
+}
+a {
+	text-decoration: none;
+}
+img {
+	display: block;
+	max-width: 100%;
+}
+.message_hover{
+	position: fixed;
+	right: 70px;
+	bottom: 60px;
+	z-index: 100;
+	width: 350px;
+	border-radius: 10px;
+	box-shadow: 1px 4px 12px 5px rgb(0 0 0 / 10%);
+	opacity: 0;
+	visibility: hidden;
+} 
+
+
+@keyframes zoom {
+	from {
+		opacity: 0;
+		transform: scale(0);
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		visibility: inherit;
+		transform: scale(1);
+	}
+	}
+.message2{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background: #00F260;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+	border-radius: 50%;
+	padding-top: 6px;
+	z-index: 10000;
+}
+.message2 i{
+	color: white;
+	font-size: 34px;
+	
+}
+.checkbox_message:checked ~ .message_hover{
+	animation: zoom linear 0.5s forwards;
+	transform-origin: bottom right;
+	
+}
+.checkbox_message:checked ~ .message2{
+	display: none !important;
+}
+.message_hover{
+	height: 450px;
+	position: fixed;
+}
+.form-bot{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100000;
+}
+/* color */

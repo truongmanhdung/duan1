@@ -1,0 +1,31 @@
+.product img {
+    width: 239px;
+    height: 158px;
+    object-fit: cover;
+}
+.col-md-2-4{
+    padding: 0 8px !important;
+    max-width: 246px;
+}
+.box-shadow{
+    transform: translateY(5%);
+}
+.col-md-2-4:hover .box-shadow{
+    cursor: pointer;
+    transform: translateY(0);
+    transition: all 0.35s linear;
+    box-shadow: 0px 0px 8px 3px rgb(0 0 0 / 10%)
+}
+.name-product{
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    margin: 0 auto;
+    height: 22px;
+    font-size: 20px;
+    line-height: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
