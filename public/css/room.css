@@ -214,7 +214,6 @@ ion-icon[name=share-outline] {
     transition: all .25s linear;
 }
 
-
 .modal2 {
     position: fixed;
     top: 50%;
@@ -243,4 +242,37 @@ ion-icon[name=share-outline] {
 #share:checked+.modal2,
 #share:checked~.overlay {
     display: block!important;
+}
+
+.title.mt--60 {
+    margin: 0!important;
+    display: none;
+}
+td.disabled{
+    background-color: #f6f6f6 !important;
+    color: #cecece !important;
+}
+.cancel{
+    display: none;
+}
+#checkma123:checked ~ .check123456 .apply{
+    display: none;
+}
+#checkma123:checked ~ .check123456 .cancel{
+    display: block;
+}
+.border-bottom .phi123{
+    display: none!important;
+}
+#checkma123:checked ~ .border-bottom .phi123{
+    display: flex!important;
+}
+#checkma123:checked ~ .check123789 .tongtiencu{
+    display: none;
+}
+.tongtienmoi{
+    display: none;
+}
+#checkma123:checked ~ .check123789 .tongtienmoi{
+    display: block;
 }

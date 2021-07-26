@@ -44,7 +44,7 @@ if (isset($_POST["submit_adddetail_hs"])) {
     $sql_hsdetail = "INSERT INTO chitietkhachsan VALUES (null,$id_hs,'$chitiet','$gioithieu','$tiennghi','','$chinhsach','$tienich','$today')";
     $result_hsdetail = $conn->query($sql_hsdetail);
     if ($result_hsdetail) {
-        echo "<script>location.href='homestaydetail.php?id='$id_hs'</script>";
+        header('location:homestaydetail.php?id=' . $id_hs . '');
     }
 }
 ?>
