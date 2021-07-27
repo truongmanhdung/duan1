@@ -559,7 +559,7 @@ include "./middlewares/connect.php";
                     </div>
                     <div class="repass mt-4">
                         <span>Bạn đã có tài khoản Luxstay?</span>
-                        <a href="" class="fw-bold text-decoration-none">
+                        <a href="logindoitac.php" class="fw-bold text-decoration-none">
                             Đăng nhập
                         </a>
                     </div>

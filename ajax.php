@@ -47,9 +47,5 @@ if (!empty($_POST['keyword'])) {
             </div>
             ';
         }
-    } else {
-        echo '<div class="alert alert-danger w-100" role="alert">
-            không tìm thấy sản phẩm nào!!!
-        </div>';
     }
 }

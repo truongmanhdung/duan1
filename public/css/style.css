@@ -611,3 +611,15 @@ td.disabled{
 #search_product::-webkit-scrollbar {
     display: none;
 }
+.list-item1{
+    display: none;
+}
+#hidden-list-item1:checked ~ .list-item1{
+    display: inline;
+}
+.list-item1{
+    background-color: #dbdbdb;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    padding: 10px 0;
+}

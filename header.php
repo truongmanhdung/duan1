@@ -134,7 +134,7 @@ include "./middlewares/connect.php";
     <div class="container">
         <header class="_header py-3 d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <a class="logo" href="../../index.php">
+                <a class="logo" href="index.php">
                     <svg>
                         <symbol id="s-text"><text text-anchor="middle" x="50%" y="80%">BOOKING</text></symbol>
                         <use class="logo-text" xlink:href="#s-text"></use>
@@ -161,7 +161,16 @@ include "./middlewares/connect.php";
                 <ul class="m-0">
                     <?php
                     if (isset($_COOKIE['doitac'])) {
-                        echo '<li><a href="doitac/index.php">Quản trị đối tác</a></li>';
+                        echo '<li class="_menu position-relative" >
+                                <label class="user-login" for="hidden-list-item1">
+                                    Quản trị đối tác
+                                </label>
+                                <input type="checkbox"  name="" id="hidden-list-item1" hidden>
+                                <ul style="position: absolute" class=" list-item1 bg-white" style="z-index: 1000;">
+                                    <li class=""><a href="./doitac/index.php" class="w-100 "><i class="fal pe-3 fa-briefcase"></i>Quản trị</a></li>
+                                    <li><a href="logoutdoitac.php"><i class="fal pe-3 fa-power-off"></i>Đăng xuất</a></li>
+                                </ul>
+                            </li>';
                     } else {
                         echo '<li><a href="doitac.php">Đối tác</a></li>';
                     }

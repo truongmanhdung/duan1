@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2021 at 07:39 PM
+-- Generation Time: Jul 27, 2021 at 04:09 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -112,15 +112,9 @@ CREATE TABLE `datphong` (
   `time_up` date NOT NULL,
   `time_out` date NOT NULL,
   `time` datetime NOT NULL,
-  `magiamgia` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `magiamgia` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `loaigiamgia` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `datphong`
---
-
-INSERT INTO `datphong` (`id`, `id_hs`, `madatphong`, `tongtien`, `time_up`, `time_out`, `time`, `magiamgia`) VALUES
-(5, 7, 'z6xsmygf32', 2120000, '2021-07-27', '2021-07-31', '2021-07-27 00:35:12', 'ni7ekf');
 
 -- --------------------------------------------------------
 
@@ -428,7 +422,7 @@ CREATE TABLE `khachsan` (
 --
 
 INSERT INTO `khachsan` (`id`, `id_doitac`, `name`, `price`, `address`, `phone`, `love`, `image`, `sophong`, `id_khuvuc`, `danhgia`, `time`) VALUES
-(4, 3, 'The Galaxy Home', 850000, 'Ngõ 80 Xuân Phương Hà Nội', '0365727226', b'0', '1.png', 1, 14, '', '2021-07-22 21:16:17'),
+(4, 1, 'The Galaxy Home', 850000, 'Ngõ 80 Xuân Phương Hà Nội', '0365727226', b'0', '1.png', 1, 14, '', '2021-07-22 21:16:17'),
 (5, 3, 'Hanoi Home 3 - Beautiful apartment for you (no. 22) - miễn phí xe đạp', 690000, 'Hà Nội 3', '0365727226', b'0', '2.jpg', 1, 14, '', '2021-07-22 21:17:19'),
 (6, 3, 'JOI homestay - căn hộ view phố,, ban công ,gần chợ đêm', 4500000, 'Hà nội ', '0365727226', b'0', '3.jpeg', 1, 14, '', '2021-07-22 21:18:12'),
 (7, 3, 'Besthome Studio Phan Kế Bính, Ba Đình, Hà Nội', 480000, 'Phan Kế Bính, Ba Đình, Hà Nội', '0365727226', b'0', '4.jpg', 2, 14, '', '2021-07-22 21:19:03'),
@@ -484,7 +478,8 @@ INSERT INTO `khachsan` (`id`, `id_doitac`, `name`, `price`, `address`, `phone`, 
 (57, 3, 'Chillin House Cloudy - Oceanview Superior Apartment', 730000, 'Vũng Tàu, Bà Rịa Vũng Tàu, Vietnam', '0982818302', b'0', 'room_25939_53_1559703665.jpg', 1, 18, '', '2021-07-25 18:41:56'),
 (58, 3, 'Tropical House Vung Tau 2- 2BRS, 2WC, SeaView', 520000, 'Vũng Tàu, Bà Rịa Vũng Tàu, Vietnam', '0982818302', b'0', 'USOqPgZesxaufL92tyWbF5KZ.jpg', 1, 18, '', '2021-07-25 18:42:55'),
 (59, 3, 'Blue Sapphire Resort Apartment', 1800000, 'Vũng Tàu, Bà Rịa Vũng Tàu, Vietnam', '0369053052', b'0', 'TYPg4dCTj6Eccj9fIgDOfv8e.jpg', 2, 18, '', '2021-07-25 18:43:24'),
-(60, 3, 'PENTHOUSE 02 - FOX’S HOMESTAY - Căn hộ Duplex Penthouse trên tầng 12 với dt 300m2 ngay sát biển', 3000000, 'Vũng Tàu, Bà Rịa Vũng Tàu, Vietnam', '0369053052', b'0', 'Phong khach 1.jpg', 3, 18, '', '2021-07-25 18:44:09');
+(60, 3, 'PENTHOUSE 02 - FOX’S HOMESTAY - Căn hộ Duplex Penthouse trên tầng 12 với dt 300m2 ngay sát biển', 3000000, 'Vũng Tàu, Bà Rịa Vũng Tàu, Vietnam', '0369053052', b'0', 'Phong khach 1.jpg', 3, 18, '', '2021-07-25 18:44:09'),
+(61, 1, 'Homestay Mỹ Đình', 600000, 'Ngõ 80 Xuân Phương', '0365727226', b'0', 'test8.jpg', 2, 14, '', '2021-07-27 21:03:48');
 
 -- --------------------------------------------------------
 
@@ -882,7 +877,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `datphong`
 --
 ALTER TABLE `datphong`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `detailmessage`
@@ -912,7 +907,7 @@ ALTER TABLE `doitac`
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `favourite`
@@ -930,7 +925,7 @@ ALTER TABLE `imagechitietkhachsan`
 -- AUTO_INCREMENT for table `khachsan`
 --
 ALTER TABLE `khachsan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `khuvuc`

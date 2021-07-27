@@ -288,7 +288,7 @@ section {
 }
 .page-container {
     background: #e5e5e5;
-    padding-left: 300px;
+    padding-left: 250px;
 }
 
 @media (max-width: 991px) {
@@ -1189,10 +1189,11 @@ section {
     position: fixed;
     top: 0;
     right: 0;
-    left: 300px;
+    left: 250px;
     height: 75px;
     z-index: 3;
 }
+
 
 .header-desktop .section__content {
     overflow: visible;
@@ -1577,7 +1578,7 @@ section {
 }
 
 .menu-sidebar {
-    width: 300px;
+    width: 250px;
     position: fixed;
     left: 0;
     top: 0;
@@ -14747,4 +14748,7 @@ section {
 .ativiti label{
     border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 10px 5px;
+}
+.table th td{
+    width: 200px !important;
 }
