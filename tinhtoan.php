@@ -58,7 +58,7 @@
                     if($status==1){
                         echo '
                             <p>Giảm giá <strong class="text-danger">'.number_format($mucgiam).'đ</strong></p>
-                            <p>Mã giảm giá: <strong class="text-danger">'.$magiamgia.'đ</strong></p>
+                            <p>Mã giảm giá: <strong class="text-danger">'.$magiamgia.'</strong></p>
                             <p>Ngày check-in: '.$check_out_ma.'</p>
                         ';
                     }

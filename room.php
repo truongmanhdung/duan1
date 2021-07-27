@@ -586,14 +586,14 @@ if ($result_chitiet->num_rows > 0) {
             }else{
                 $tongtien = $giaphong * $songay + $phidichvu - $mucgiam*$giaphong*$songay/100;
             }
-            $sql_donhang = "INSERT INTO datphong VALUES (null,$id_hs,'$mahoadon',$tongtien,'$check_in','$check_out','$today','$magiamgia')";
+            $sql_donhang = "INSERT INTO datphong VALUES (null,$id_hs,'$mahoadon',$tongtien,'$check_in','$check_out','$today','$magiamgia','$loaigiamgia')";
         
             $result_donhang = $conn->query($sql_donhang);
             if ($result_donhang) {
                 header("location: thanhtoan.php?mahoadon=$mahoadon");
             }
         }else{
-            $sql_donhang = "INSERT INTO datphong VALUES (null,$id_hs,'$mahoadon',$tongtien,'$check_in','$check_out','$today','')";
+            $sql_donhang = "INSERT INTO datphong VALUES (null,$id_hs,'$mahoadon',$tongtien,'$check_in','$check_out','$today','','')";
             
             $result_donhang = $conn->query($sql_donhang);
             if ($result_donhang) {

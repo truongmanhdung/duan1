@@ -167,13 +167,13 @@
                     <h5>TẢI ỨNG DỤNG BOOKING</h5>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 my-4">
-                            <img src="../../public/image/apple-store.svg" alt="">
+                            <img src="./public/image/apple-store.svg" alt="">
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 my-4">
-                            <img src="../../public/image/google-play.svg" alt="">
+                            <img src="./public/image/google-play.svg" alt="">
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <img src="../../public/image/huawei.svg" alt="">
+                            <img src="./public/image/huawei.svg" alt="">
                         </div>
                     </div>
                 </div>
