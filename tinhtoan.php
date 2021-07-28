@@ -16,7 +16,7 @@
             $sql_ma = "SELECT * FROM mggkhuvuc WHERE magiamgia = '$magiamgia'";
         }else if($loaigiamgia == "user"){
             $sql_ma = "SELECT * FROM mgguser WHERE magiamgia = '$magiamgia'";
-        }else if($loaigiam == "all"){
+        }else if($loaigiamgia == "all"){
             $sql_ma = "SELECT * FROM maggall WHERE magiamgia = '$magiamgia'";
         }
         $result_ma = $conn->query($sql_ma);

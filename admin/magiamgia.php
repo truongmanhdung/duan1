@@ -25,9 +25,9 @@
                 $dem_all++;
                 $id_all = $row_all['id'];
                 $magiamgia_all = $row_all['magiamgia'];
-                $time_up_all = $row_all['timeup'];
+                $time_up_all = $row_all['time_up'];
                 $mucgiam_all = $row_all['mucgiam'];
-                $time_out_all = $row_all['timeout'];
+                $time_out_all = $row_all['time_out'];
                 $status_all = $row_all['status'];
                 echo '<tr>
                 <th class="text-center" scope="row">'.$dem_all.'</th>
@@ -46,7 +46,7 @@
                 <td class="text-center">'.$time_out_all.'</td>
                 <td class="text-center">
                   <a class="btn btn-primary" href="editmaggall.php?id='.$id_all.'">Sửa</a>
-                  <a class="btn btn-danger" onclick="return confirm(\'Bạn có muốn xóa không ?\')" href="deletemaggall.php?id='.$id_all.'">Sửa</a>
+                  <a class="btn btn-danger" onclick="return confirm(\'Bạn có muốn xóa không ?\')" href="deletemaggall.php?id='.$id_all.'">Xóa</a>
                 </td>
               </tr>';
 

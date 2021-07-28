@@ -547,7 +547,7 @@ if ($result_chitiet->num_rows > 0) {
                         $.ajax({
                             type: "POST",
                             url: "tinhtoan.php",
-                            data: "date="+$(this).val()+"&giaphong="+giaphong+"&magiamgia="+magiamgia + "&loaigiamgia="+loaigiamgia,
+                            data: "date="+$(this).val()+"&&giaphong="+giaphong+"&&magiamgia="+magiamgia + "&&loaigiamgia="+loaigiamgia,
                             success: function (response) {
                                 $(".showmagiamgia").html(response)
                             }

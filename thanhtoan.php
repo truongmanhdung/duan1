@@ -16,23 +16,6 @@ if (isset($_GET["mahoadon"])) {
             $songay = (strtotime($time_out) - strtotime($time_up)) / 86400;
             $phidichvu = 100000 * $songay;
             $loaigiamgia = $row_hd['loaigiamgia'];
-            if($loaigiamgia == "homestay"){
-                $sql_ma = "SELECT * FROM phieugiamgia WHERE magiamgia = '$magiamgia'";
-            }else if($loaigiamgia == "all"){
-                $sql_ma = "SELECT * FROM maggall WHERE magiamgia = '$magiamgia'";
-            }else if($loaigiamgia == "user"){
-                $sql_ma = "SELECT * FROM mgguser WHERE magiamgia = '$magiamgia' and id_user = $id";
-            }else if($loaigiamgia == "khuvuc"){
-                $sql_ma = "SELECT * FROM mggkhuvuc WHERE magiamgia = '$magiamgia'";
-            }
-            $result_ma = $conn->query($sql_ma);
-            if($result_ma->num_rows > 0){
-                while($row_ma = $result_ma->fetch_assoc()){
-                    $mucgiam = $row_ma['mucgiam'];
-                    $status = $row_ma['status'];
-                }
-            }
-        
             $sql_hs = "SELECT * FROM khachsan where id=$id_hs";
             $result_hs = $conn->query($sql_hs);
             if ($result_hs->num_rows > 0) {
@@ -45,11 +28,32 @@ if (isset($_GET["mahoadon"])) {
                     $sophong_hs = $row_hs['sophong'];
                 }
             }
-            if($status == 1){
-                $tiengiam = $mucgiam;
-            }else{
-                $tiengiam = $mucgiam*$songay*$price_hs/100;
+            
+            if(!empty($loaigiamgia)){
+                if($loaigiamgia == "homestay"){
+                    $sql_ma = "SELECT * FROM phieugiamgia WHERE magiamgia = '$magiamgia'";
+                }else if($loaigiamgia == "all"){
+                    $sql_ma = "SELECT * FROM maggall WHERE magiamgia = '$magiamgia'";
+                }else if($loaigiamgia == "user"){
+                    $sql_ma = "SELECT * FROM mgguser WHERE magiamgia = '$magiamgia' and id_user = $id";
+                }else if($loaigiamgia == "khuvuc"){
+                    $sql_ma = "SELECT * FROM mggkhuvuc WHERE magiamgia = '$magiamgia'";
+                }
+                $result_ma = $conn->query($sql_ma);
+                if($result_ma->num_rows > 0){
+                    while($row_ma = $result_ma->fetch_assoc()){
+                        $mucgiam = $row_ma['mucgiam'];
+                        $status = $row_ma['status'];
+                    }
+                }
+                if($status == 1){
+                    $tiengiam = $mucgiam;
+                }else{
+                    $tiengiam = $mucgiam*$songay*$price_hs/100;
+                }
             }
+        
+            
         }
     }
 }
