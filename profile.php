@@ -19,7 +19,7 @@
         <div id="header">
             <header class="_header py-3 d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
-                    <a class="logo d-block" href="index.html">
+                    <a class="logo d-block" href="index.php">
                         <svg>
                             <symbol id="s-text"><text text-anchor="middle" x="50%" y="80%">BOOKING</text></symbol>
                             <use class="logo-text" xlink:href="#s-text"></use>

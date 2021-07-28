@@ -207,8 +207,8 @@
                                 <i class="fas fa-table"></i>Mã giảm giá</a>
                         </li>
                         <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Danh sách hóa đơn</a>
+                            <a href="quanlydoitac.php">
+                                <i class="far fa-check-square"></i>Quản lý đối tác</a>
                         </li>
                         <li>
                             <a href="calendar.html">

@@ -42,19 +42,19 @@
                             }
                         }
                         echo '
-                            <tr>
-                                <td class="text-center">'.$dem.'</td>
-                                <td class="text-center">'.$name.'</td>
-                                <td class="text-center">'.number_format($price).'đ</td>
-                                <td class="text-center">'.$address.'</td>
-                                <td class="text-center">'.$phone.'</td>
-                                <td class="text-center">
+                            <tr >
+                                <td style="vertical-align: middle" class="text-center">'.$dem.'</td>
+                                <td style="vertical-align: middle; overflow: hidden" class="text-justify"><p style="width: 200px;">'.$name.'</p></td>
+                                <td style="vertical-align: middle" class="text-center">'.number_format($price).'đ</td>
+                                <td style="vertical-align: middle" class="text-center">'.$address.'</td>
+                                <td style="vertical-align: middle" class="text-center">'.$phone.'</td>
+                                <td style="vertical-align: middle" class="text-center">
                                     <img src="../public/image/homestay/'.$image.'" style="width: 100px;" alt="">
                                 </td>
-                                <td class="text-center">'.$sophong.'</td>
-                                <td class="text-center">'.$namekv.'</td>
-                                <td class="text-center">'.$time.'</td>
-                                <td class="text-center">
+                                <td style="vertical-align: middle" class="text-center">'.$sophong.'</td>
+                                <td style="vertical-align: middle" class="text-center">'.$namekv.'</td>
+                                <td style="vertical-align: middle" class="text-center">'.$time.'</td>
+                                <td style="vertical-align: middle" class="text-center">
                                     <a href="homestaydetail.php?id='.$row_hs['id'].'" class="btn btn-primary">Xem chi tiết</a>
                             </td>
                             </tr>

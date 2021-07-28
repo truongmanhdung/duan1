@@ -341,7 +341,7 @@ if (isset($_GET["mahoadon"])) {
                                             <span class="pe-2">Phí dịch vụ</span>
                                         </div>
                                         <div class="price">
-                                            <span><?php echo number_format($phidichvu)?></span>
+                                            <span><?php echo number_format($phidichvu)?>đ</span>
                                         </div>
                                     </div>
                                     <?php 

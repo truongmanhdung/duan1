@@ -14749,6 +14749,12 @@ section {
     border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 10px 5px;
 }
-.table th td{
+td{
     width: 200px !important;
+    vertical-align: middle !important;
+    text-align: justify !important;
+}
+th{
+    vertical-align: middle !important;
+    text-align: justify !important;
 }

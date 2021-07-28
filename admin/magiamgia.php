@@ -6,13 +6,13 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="text-center" scope="col">STT</th>
-      <th class="text-center" scope="col">Mã giảm giá</th>
-      <th class="text-center" scope="col">Mức giảm</th>
-      <th class="text-center" scope="col">Trạng thái</th>
-      <th class="text-center" scope="col">Ngày bắt đầu</th>
-      <th class="text-center" scope="col">Ngày kết thúc</th>
-      <th class="text-center" scope="col">Chức năng</th>
+      <th scope="col">STT</th>
+      <th scope="col">Mã giảm giá</th>
+      <th scope="col">Mức giảm</th>
+      <th scope="col">Trạng thái</th>
+      <th scope="col">Ngày bắt đầu</th>
+      <th scope="col">Ngày kết thúc</th>
+      <th scope="col">Chức năng</th>
     </tr>
   </thead>
   <tbody>
@@ -30,21 +30,21 @@
                 $time_out_all = $row_all['time_out'];
                 $status_all = $row_all['status'];
                 echo '<tr>
-                <th class="text-center" scope="row">'.$dem_all.'</th>
-                <td class="text-center">'.$magiamgia_all.'</td>';
+                <th scope="row">'.$dem_all.'</th>
+                <td>'.$magiamgia_all.'</td>';
                 if($status_all == 1){
-                  echo '<td class="text-center">'.number_format($mucgiam_all).'đ</td>';
+                  echo '<td>'.number_format($mucgiam_all).'đ</td>';
                 }else{
-                  echo '<td class="text-center">'.$mucgiam_all.'%</td>';
+                  echo '<td>'.$mucgiam_all.'%</td>';
                 }
                 if(strtotime($time_out_all) > strtotime($today)){
-                  echo '<td class="text-center">Còn hạn</td>';
+                  echo '<td>Còn hạn</td>';
                 }else{
-                  echo '<td class="text-center">Hết hạn</td>';
+                  echo '<td>Hết hạn</td>';
                 }
-                echo '<td class="text-center">'.$time_up_all.'</td>
-                <td class="text-center">'.$time_out_all.'</td>
-                <td class="text-center">
+                echo '<td>'.$time_up_all.'</td>
+                <td>'.$time_out_all.'</td>
+                <td>
                   <a class="btn btn-primary" href="editmaggall.php?id='.$id_all.'">Sửa</a>
                   <a class="btn btn-danger" onclick="return confirm(\'Bạn có muốn xóa không ?\')" href="deletemaggall.php?id='.$id_all.'">Xóa</a>
                 </td>
@@ -61,10 +61,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="text-center" scope="col">STT</th>
-      <th class="text-center" scope="col">Tên Khu Vực</th>
-      <th class="text-center" scope="col">Số mã</th>
-      <th class="text-center" scope="col">Xem chi tiết</th>
+      <th scope="col">STT</th>
+      <th scope="col">Tên Khu Vực</th>
+      <th scope="col">Số mã</th>
+      <th scope="col">Xem chi tiết</th>
     </tr>
   </thead>
   <tbody>
@@ -92,10 +92,10 @@
                     }
                 }
                 echo '<tr>
-                <th class="text-center" scope="row">'.$dem_1.'</th>
-                <td class="text-center">'.$name_khuvuc.'</td>
-                <td class="text-center">'.$dem_2.'</td>
-                <td class="text-center"><a class="btn btn-primary" href="magiamgiadetail.php?id='.$id_1.'&loai=khuvuc">Xem chi tiết</a></td>
+                <th scope="row">'.$dem_1.'</th>
+                <td>'.$name_khuvuc.'</td>
+                <td>'.$dem_2.'</td>
+                <td><a class="btn btn-primary" href="magiamgiadetail.php?id='.$id_1.'&loai=khuvuc">Xem chi tiết</a></td>
               </tr>';
 
             }
@@ -109,10 +109,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="text-center" scope="col">STT</th>
-      <th class="text-center" scope="col">Tên homestay</th>
-      <th class="text-center" scope="col">Số mã</th>
-      <th class="text-center" scope="col">Xem chi tiết</th>
+      <th  scope="col">STT</th>
+      <th  scope="col">Tên homestay</th>
+      <th  scope="col">Số mã</th>
+      <th  scope="col">Xem chi tiết</th>
     </tr>
   </thead>
   <tbody>
@@ -140,10 +140,10 @@
                     }
                 }
                 echo '<tr>
-                <th class="text-center" scope="row">'.$dem1.'</th>
-                <td class="text-center">'.$name.'</td>
-                <td class="text-center">'.$dem.'</td>
-                <td class="text-center"><a class="btn btn-primary" href="magiamgiadetail.php?id='.$id_hs.'&loai=homestay">Xem chi tiết</a></td>
+                <th scope="row">'.$dem1.'</th>
+                <td>'.$name.'</td>
+                <td>'.$dem.'</td>
+                <td><a class="btn btn-primary" href="magiamgiadetail.php?id='.$id_hs.'&loai=homestay">Xem chi tiết</a></td>
               </tr>';
 
             }
@@ -157,12 +157,12 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="text-center" scope="col">STT</th>
-      <th class="text-center" scope="col">Tên user</th>
-      <th class="text-center" scope="col">Mã giảm giá</th>
-      <th class="text-center" scope="col">Mức giảm</th>
-      <th class="text-center" scope="col">Trạng thái</th>
-      <th class="text-center" scope="col">Ngày hết hạn</th>
+      <th scope="col">STT</th>
+      <th scope="col">Tên user</th>
+      <th scope="col">Mã giảm giá</th>
+      <th scope="col">Mức giảm</th>
+      <th scope="col">Trạng thái</th>
+      <th scope="col">Ngày hết hạn</th>
     </tr>
   </thead>
   <tbody>
@@ -186,18 +186,18 @@
                   }
                 }
                 echo '<tr>
-                <th class="text-center" scope="row">'.$dem1.'</th>
-                <td class="text-center">'.$name_user.'</td>
-                <td class="text-center">'.$name_magguser.'</td>
-                <td class="text-center">'.$mucgiam.'đ</td>';
+                <th scope="row">'.$dem1.'</th>
+                <td>'.$name_user.'</td>
+                <td>'.$name_magguser.'</td>
+                <td>'.$mucgiam.'đ</td>';
                 if(strtotime($time_out) > strtotime($today)){
-                  echo '<td class="text-center">Còn hạn</td>';
+                  echo '<td>Còn hạn</td>';
                 }else{
-                  echo '<td class="text-center">Hết hạn</td>';
+                  echo '<td>Hết hạn</td>';
                 }
                 
               echo '
-              <td class="text-center">'.$time_out.'</td>
+              <td>'.$time_out.'</td>
               </tr>';
 
             }
