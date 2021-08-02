@@ -109,23 +109,20 @@ if ($result_kv->num_rows > 0) {
                     echo '<script>
                         (function() {
                             const second = 1000,
-                                minute = second * 60,
-                                hour = minute * 60,
-                                day = hour * 24;
+                            minute = second * 60,
+                            hour = minute * 60,
+                            day = hour * 24;
                         
                             let birthday = "' . $time_out . '",
                                 countDown = new Date(birthday).getTime(),
                                 x = setInterval(function() {
-                                    
                                     let now = new Date().getTime(),
-                                        distance = countDown - now;
-                        
+                                    distance = countDown - now;
                                     document.getElementById("days").innerText = `0${Math.floor(distance / (day))}`.slice(-2),
-                                        document.getElementById("hours").innerText = `0${Math.floor((distance % (day)) / (hour))}`.slice(-2),
-                                        document.getElementById("minutes").innerText =  `0${Math.floor((distance % (hour)) / (minute))}`.slice(-2),
-                                        document.getElementById("seconds").innerText = `0${Math.floor((distance % (minute)) / (second))}`.slice(-2);
+                                    document.getElementById("hours").innerText = `0${Math.floor((distance % (day)) / (hour))}`.slice(-2),
+                                    document.getElementById("minutes").innerText =  `0${Math.floor((distance % (hour)) / (minute))}`.slice(-2),
+                                    document.getElementById("seconds").innerText = `0${Math.floor((distance % (minute)) / (second))}`.slice(-2);
                         
-                //do something later when date is reached
                                     if (distance < 0) {
                                         if (distance < 0) {
                                             document.querySelector(".discount").remove();         

@@ -53,69 +53,64 @@ include "./middlewares/connect.php";
                 <label for="checkbox_message" class="fas fa-times"></label>
             </div>
             <?php
-                if(isset($_COOKIE['user'])){
-                    $email = $_COOKIE['user'];
-                    $sql_mess1 = "SELECT * FROM message WHERE email = '$email'";
-                    $result_mess1 = $conn->query($sql_mess1);
-                    if($result_mess1->num_rows > 0){
-                        echo '<div class="show-message" id="message_cuon">';
-                        while($row_mess1 = $result_mess1->fetch_assoc()){
-                            $id_mess1 = $row_mess1['id'];
-                            $message1 = $row_mess1['message'];
+            if (isset($_COOKIE['user'])) {
+                $email = $_COOKIE['user'];
+                $sql_mess1 = "SELECT * FROM message WHERE email = '$email' ORDER BY time ASC";
+                $result_mess1 = $conn->query($sql_mess1);
+                if ($result_mess1->num_rows > 0) {
+                    echo '<div class="show-message" id="message_cuon">';
+                    while ($row_mess1 = $result_mess1->fetch_assoc()) {
+                        $id_mess1 = $row_mess1['id'];
+                        $message1 = $row_mess1['message'];
+                        $status = $row_mess1['status'];
+                        if ($status == 0) {
                             echo '
-                                <div class="abc">
-                                    <p class="message_show">'.$message1.'</p>
-                                </div>
+                            <div class="abc">
+                                <p class="message_show">' . $message1 . '</p>
+                            </div>
                             ';
-                            $sql_repmessage = "SELECT * FROM repmessage WHERE id_message = '$id_mess1'";
-                            $result_repmessage = $conn->query($sql_repmessage);
-                            if($result_repmessage->num_rows > 0){
-                                while($row_repmessage = $result_repmessage->fetch_assoc()){
-                                    $rep_message = $row_repmessage['message'];
-                                    echo '<div class="d-flex align-items-center ms-2 rep-message">
-                                    <img width="50px" height="50px" src="https://www.pikpng.com/pngl/b/75-756814_login-user-imagen-user-png-clipart.png" class="rounded-circle" alt="">
-                                    <p class="message_rep">'.$rep_message.'</p>
-                                </div>';
-                                }
-                            }
-                            
+                        } else {
+                            echo '<div class="d-flex align-items-center ms-2 rep-message">
+                            <img width="50px" height="50px" src="https://www.pikpng.com/pngl/b/75-756814_login-user-imagen-user-png-clipart.png" class="rounded-circle" alt="">
+                            <p class="message_rep">' . $message1 . '</p>
+                            </div>';
                         }
-                        echo '</div>';
-                    }else{
-                        echo '<div class="show-message" id="message_cuon">
+                    }
+                    echo '</div>';
+                } else {
+                    echo '<div class="show-message" id="message_cuon">
                                 <p class="text-center py-2">Chào bạn, chúng tôi có thể giúp gì cho bạn...</p>
                             </div>
                        
                         ';
-                    }
-                   
-                }else{
-                    echo '
+                }
+            } else {
+                echo '
                         <p class="text-center pt-5">Hãy <a href="dangnhap.php">đăng nhập</a> hoặc <a href="dangki.php">đăng kí</a> để chat với chúng tôi nhé</p>
                     ';
-                }
+            }
 
             ?>
-           
+
             <form action="" class="d-flex form-bot pt-3">
-                <input type="text"  name="message" placeholder="Nhập tin nhắn" class="checkbox_message form-control" id="message_add">
+                <input type="text" name="message" placeholder="Nhập tin nhắn" class="checkbox_message form-control" id="message_add">
                 <button type="submit" class="btn btn-primary" id="submit_message">Gửi</button>
             </form>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-       
+
         <script>
             var element = document.getElementById("message_cuon");
             element.scrollTop = element.scrollHeight;
-            
-            $(document).ready(function () {
-                $("#submit_message").click(function (e) { 
+
+            $(document).ready(function() {
+                $("#submit_message").click(function(e) {
                     e.preventDefault();
                     $.ajax({
                         type: "post",
                         url: "message.php",
-                        data: "message="+$("#message_add").val(),
-                        success: function (data) {
+                        data: "message=" + $("#message_add").val(),
+                        success: function(data) {
                             $("#message_add").val('');
                             $(".show-message").html(data)
                             var settime = setInterval(() => {
@@ -191,7 +186,7 @@ include "./middlewares/connect.php";
                                             </label>
                                             <input type="checkbox" name="" id="hidden-list-item" hidden>
                                             <ul class="position-absolute list-item bg-white" style="z-index: 1000;">
-                                                <li><a href=""><i class="fal pe-3 fa-briefcase"></i>Đặt chỗ của tôi</a></li>
+                                                <li><a href="order.php"><i class="fal pe-3 fa-briefcase"></i>Đặt chỗ của tôi</a></li>
                                                 <li><a href=""><i class="fal pe-3 fa-envelope"></i>Tin nhắn</a></li>
                                                 <li><a href="profile.php"><i class="fal pe-3 fa-briefcase"></i>Cài đặt tài khoản</a></li>
                                                 <li><a href="dangxuat.php"><i class="fal pe-3 fa-power-off"></i>Đăng xuất</a></li>

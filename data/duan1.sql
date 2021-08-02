@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 06:17 PM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th8 02, 2021 lúc 07:24 PM
+-- Phiên bản máy phục vụ: 10.4.16-MariaDB
+-- Phiên bản PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `duan1`
+-- Cơ sở dữ liệu: `duan1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner`
+-- Cấu trúc bảng cho bảng `banner`
 --
 
 CREATE TABLE `banner` (
@@ -37,7 +37,7 @@ CREATE TABLE `banner` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chitietkhachsan`
+-- Cấu trúc bảng cho bảng `chitietkhachsan`
 --
 
 CREATE TABLE `chitietkhachsan` (
@@ -53,7 +53,7 @@ CREATE TABLE `chitietkhachsan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `chitietkhachsan`
+-- Đang đổ dữ liệu cho bảng `chitietkhachsan`
 --
 
 INSERT INTO `chitietkhachsan` (`id`, `id_khachsan`, `chitiet`, `gioithieu`, `tiennghi`, `danhgia`, `chinhsach`, `tienich`, `time`) VALUES
@@ -89,7 +89,7 @@ INSERT INTO `chitietkhachsan` (`id`, `id_khachsan`, `chitiet`, `gioithieu`, `tie
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Cấu trúc bảng cho bảng `comment`
 --
 
 CREATE TABLE `comment` (
@@ -103,7 +103,7 @@ CREATE TABLE `comment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datphong`
+-- Cấu trúc bảng cho bảng `datphong`
 --
 
 CREATE TABLE `datphong` (
@@ -118,10 +118,21 @@ CREATE TABLE `datphong` (
   `loaigiamgia` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `datphong`
+--
+
+INSERT INTO `datphong` (`id`, `id_hs`, `madatphong`, `tongtien`, `time_up`, `time_out`, `time`, `magiamgia`, `loaigiamgia`) VALUES
+(13, 4, '7auditwcl4', 2850000, '2021-08-22', '2021-08-25', '2021-07-28 14:39:33', '', ''),
+(14, 4, '4jbpvcr6uh', 1900000, '2021-07-28', '2021-07-30', '2021-07-28 14:54:48', '', ''),
+(15, 4, '7jiaz694mk', 2850000, '2021-07-28', '2021-07-31', '2021-07-28 14:56:50', '', ''),
+(16, 4, 'lr4fy3k8na', 3600000, '2021-08-23', '2021-08-27', '2021-07-28 20:10:42', 'MH370', 'homestay'),
+(17, 4, 'm7hw49ybtv', 3600000, '2021-08-09', '2021-08-13', '2021-08-01 14:07:12', 'dung145', 'all');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detailmessage`
+-- Cấu trúc bảng cho bảng `detailmessage`
 --
 
 CREATE TABLE `detailmessage` (
@@ -136,7 +147,7 @@ CREATE TABLE `detailmessage` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doanhthu`
+-- Cấu trúc bảng cho bảng `doanhthu`
 --
 
 CREATE TABLE `doanhthu` (
@@ -150,7 +161,7 @@ CREATE TABLE `doanhthu` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doanhthudoitac`
+-- Cấu trúc bảng cho bảng `doanhthudoitac`
 --
 
 CREATE TABLE `doanhthudoitac` (
@@ -162,7 +173,7 @@ CREATE TABLE `doanhthudoitac` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doitac`
+-- Cấu trúc bảng cho bảng `doitac`
 --
 
 CREATE TABLE `doitac` (
@@ -177,7 +188,7 @@ CREATE TABLE `doitac` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `doitac`
+-- Đang đổ dữ liệu cho bảng `doitac`
 --
 
 INSERT INTO `doitac` (`id`, `name`, `email`, `phone`, `cmnd`, `address`, `password`, `time`) VALUES
@@ -190,7 +201,7 @@ INSERT INTO `doitac` (`id`, `name`, `email`, `phone`, `cmnd`, `address`, `passwo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `donhang`
+-- Cấu trúc bảng cho bảng `donhang`
 --
 
 CREATE TABLE `donhang` (
@@ -202,7 +213,7 @@ CREATE TABLE `donhang` (
   `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` int(11) NOT NULL,
   `mahoadon` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trangthai` bit(4) NOT NULL,
+  `trangthai` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `tongtien` int(11) NOT NULL,
   `checkin` date NOT NULL,
@@ -210,10 +221,19 @@ CREATE TABLE `donhang` (
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`id`, `id_user`, `id_hs`, `name`, `email`, `address`, `phone`, `mahoadon`, `trangthai`, `price`, `tongtien`, `checkin`, `checkout`, `time`) VALUES
+(46, 30, 5, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'khu 5 tiên phong ba vì hà nội', 365727226, 'w17e6sqdhp', 4, 690000, 2170000, '2021-08-17', '2021-08-20', '2021-08-02 23:11:47'),
+(47, 30, 19, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'khu 5 tiên phong ba vì hà nội', 365727226, 'qmvfwepuix', 1, 1200000, 1100000, '2021-08-04', '2021-08-05', '2021-08-02 23:29:38'),
+(48, 30, 18, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'khu 5 tiên phong ba vì hà nội', 365727226, 'p845u3kszr', 0, 614635, 2143905, '2021-08-17', '2021-08-20', '2021-08-02 23:34:33');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favourite`
+-- Cấu trúc bảng cho bảng `favourite`
 --
 
 CREATE TABLE `favourite` (
@@ -224,10 +244,18 @@ CREATE TABLE `favourite` (
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `favourite`
+--
+
+INSERT INTO `favourite` (`id`, `id_khachsan`, `id_user`, `status`, `time`) VALUES
+(15, 17, 27, b'001', '2021-07-28 15:11:00'),
+(16, 19, 27, b'001', '2021-07-28 15:11:03');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history`
+-- Cấu trúc bảng cho bảng `history`
 --
 
 CREATE TABLE `history` (
@@ -245,16 +273,17 @@ CREATE TABLE `history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `history`
+-- Đang đổ dữ liệu cho bảng `history`
 --
 
 INSERT INTO `history` (`id`, `name`, `email`, `phone`, `address`, `tongtien`, `timeup`, `timeout`, `id_hs`, `id_dt`, `time`) VALUES
-(1, 'Nguyễn Văn Linh', 'Linhvvph13155@fpt.edu.vn', 365727226, 'khu 5 tiên phong ba vì hà nội', 3600000, '2021-08-01', '2021-08-05', 4, 1, '2021-07-27 23:01:49');
+(1, 'Nguyễn Văn Linh', 'Linhvvph13155@fpt.edu.vn', 365727226, 'khu 5 tiên phong ba vì hà nội', 3600000, '2021-08-01', '2021-08-05', 4, 1, '2021-07-27 23:01:49'),
+(2, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 365727226, 'khu 5 tiên phong ba vì hà nội', 2650000, '2021-08-09', '2021-08-12', 4, 1, '2021-07-28 22:48:47');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imagechitietkhachsan`
+-- Cấu trúc bảng cho bảng `imagechitietkhachsan`
 --
 
 CREATE TABLE `imagechitietkhachsan` (
@@ -264,7 +293,7 @@ CREATE TABLE `imagechitietkhachsan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `imagechitietkhachsan`
+-- Đang đổ dữ liệu cho bảng `imagechitietkhachsan`
 --
 
 INSERT INTO `imagechitietkhachsan` (`id`, `id_chitiet`, `image`) VALUES
@@ -447,7 +476,7 @@ INSERT INTO `imagechitietkhachsan` (`id`, `id_chitiet`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khachsan`
+-- Cấu trúc bảng cho bảng `khachsan`
 --
 
 CREATE TABLE `khachsan` (
@@ -466,7 +495,7 @@ CREATE TABLE `khachsan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `khachsan`
+-- Đang đổ dữ liệu cho bảng `khachsan`
 --
 
 INSERT INTO `khachsan` (`id`, `id_doitac`, `name`, `price`, `address`, `phone`, `love`, `image`, `sophong`, `id_khuvuc`, `danhgia`, `time`) VALUES
@@ -483,9 +512,9 @@ INSERT INTO `khachsan` (`id`, `id_doitac`, `name`, `price`, `address`, `phone`, 
 (14, 3, 'ARL Trúc Bạch • Căn hộ 1 Phòng Ngủ City ', 550000, 'ARL Trúc Bạch', '0365727226', b'0', '14.jpg', 1, 14, '', '2021-07-22 21:28:05'),
 (15, 3, 'Green room ❣  Địa điểm hẹn hò lý tưởng ❣', 810000, 'Ngõ 80 Xuân Phương', '0365727226', b'0', '15.jpg', 1, 14, '', '2021-07-22 21:28:54'),
 (16, 6, 'BHA - R1 - Executive With Balcony', 700000, 'Hà nội', '0365727226', b'0', '6.jpg', 1, 14, '', '2021-07-24 20:51:53'),
-(17, 3, 'The Royal Homies Suite Balcony - Phu My Hung (SECC, Crescent Mall, SC Vivo City)', 3074444, 'Quận 7, Hồ Chí Minh, Vietnam', '0369053052', b'0', 'hcm.jpg', 1, 15, '', '2021-07-25 16:39:57'),
+(17, 3, 'The Royal Homies Suite Balcony - Phu My Hung (SECC, Crescent Mall, SC Vivo City)', 3074444, 'Quận 7, Hồ Chí Minh, Vietnam', '0369053052', b'1', 'hcm.jpg', 1, 15, '', '2021-07-25 16:39:57'),
 (18, 3, 'Pura Vida 1  Studio 35m2', 614635, 'Quận 1, Hồ Chí Minh, Vietnam', '0369053052', b'0', 'hcm2-1.png', 1, 15, '', '2021-07-25 17:07:26'),
-(19, 3, '2 BR- Lux Millennium- View Sông SG & Bitexco- Free Gym & Pool', 1200000, 'Quận 4, Hồ Chí Minh, Vietnam', '0984484849', b'0', 'hcm3.3.jpg', 1, 15, '', '2021-07-25 17:16:51'),
+(19, 3, '2 BR- Lux Millennium- View Sông SG & Bitexco- Free Gym & Pool', 1200000, 'Quận 4, Hồ Chí Minh, Vietnam', '0984484849', b'1', 'hcm3.3.jpg', 1, 15, '', '2021-07-25 17:16:51'),
 (20, 3, 'The Rivergate - modern designed and cozy studio', 500000, 'Quận 4, Hồ Chí Minh, Vietnam', '0369053052', b'0', '163.jpg', 1, 15, '', '2021-07-25 17:59:41'),
 (21, 3, 'SUMMER HOUSE♙♞BenThanh*BuiVien*Terrace', 300000, 'Quận 1, Hồ Chí Minh, Vietnam', '0369053052', b'0', '157c970aecc90a9753d8.jpg', 1, 15, '', '2021-07-25 18:04:13'),
 (22, 3, 'Glowing Private Room near Ben Thanh Market *BT303', 690000, 'Quận 1, Hồ Chí Minh, Vietnam', '0984484849', b'0', '1539943417_DSC06108.jpg', 1, 15, '', '2021-07-25 18:04:54'),
@@ -532,7 +561,7 @@ INSERT INTO `khachsan` (`id`, `id_doitac`, `name`, `price`, `address`, `phone`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khuvuc`
+-- Cấu trúc bảng cho bảng `khuvuc`
 --
 
 CREATE TABLE `khuvuc` (
@@ -544,7 +573,7 @@ CREATE TABLE `khuvuc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `khuvuc`
+-- Đang đổ dữ liệu cho bảng `khuvuc`
 --
 
 INSERT INTO `khuvuc` (`id`, `name`, `image`, `address`, `time`) VALUES
@@ -560,7 +589,7 @@ INSERT INTO `khuvuc` (`id`, `name`, `image`, `address`, `time`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `maggall`
+-- Cấu trúc bảng cho bảng `maggall`
 --
 
 CREATE TABLE `maggall` (
@@ -574,7 +603,7 @@ CREATE TABLE `maggall` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `maggall`
+-- Đang đổ dữ liệu cho bảng `maggall`
 --
 
 INSERT INTO `maggall` (`id`, `magiamgia`, `mucgiam`, `status`, `time_up`, `time_out`, `time`) VALUES
@@ -583,7 +612,7 @@ INSERT INTO `maggall` (`id`, `magiamgia`, `mucgiam`, `status`, `time_up`, `time_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Cấu trúc bảng cho bảng `message`
 --
 
 CREATE TABLE `message` (
@@ -593,28 +622,44 @@ CREATE TABLE `message` (
   `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `time` datetime NOT NULL,
-  `status` bit(3) NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `message`
+-- Đang đổ dữ liệu cho bảng `message`
 --
 
 INSERT INTO `message` (`id`, `id_user`, `name`, `email`, `message`, `time`, `status`) VALUES
-(69, 27, 'Nguyễn Văn Linh', 'dung@0401', 'anh ádsadas', '2021-07-19 21:40:36', b'000'),
-(70, 27, 'Nguyễn Văn Linh', 'dung@0401', 'em linh giỏi vl', '2021-07-19 21:47:48', b'000'),
-(118, 28, 'dũng trương mạnh', 'linh@123', 'sdadsadsa', '2021-07-20 00:20:12', b'001'),
-(119, 28, 'dũng trương mạnh', 'linh@123', 'saddssda', '2021-07-20 00:20:48', b'000'),
-(120, 28, 'dũng trương mạnh', 'linh@123', 'sdadsadsa', '2021-07-20 00:20:56', b'001'),
-(126, 27, 'Nguyễn Văn Linh', 'dung@0401', 'sdsdasdadsas', '2021-07-23 15:35:19', b'001'),
-(127, 27, 'Nguyễn Văn Linh', 'dung@0401', 'sdadsadsa', '2021-07-23 15:35:48', b'000'),
-(128, 27, 'Nguyễn Văn Linh', 'dung@0401', 'a', '2021-07-23 17:25:54', b'000'),
-(129, 27, 'Nguyễn Văn Linh', 'dung@0401', 'sa', '2021-07-23 18:00:19', b'000');
+(69, 27, 'Nguyễn Văn Linh', 'dung@0401', 'anh ádsadas', '2021-07-19 21:40:36', 0),
+(70, 27, 'Nguyễn Văn Linh', 'dung@0401', 'em linh giỏi vl', '2021-07-19 21:47:48', 0),
+(118, 28, 'dũng trương mạnh', 'linh@123', 'admin', '2021-07-20 00:20:12', 1),
+(119, 28, 'dũng trương mạnh', 'linh@123', 'user', '2021-07-20 00:20:48', 0),
+(120, 28, 'dũng trương mạnh', 'linh@123', 'admin', '2021-07-20 00:20:56', 1),
+(126, 27, 'Nguyễn Văn Linh', 'dung@0401', 'sdsdasdadsas', '2021-07-23 15:35:19', 1),
+(127, 27, 'Nguyễn Văn Linh', 'dung@0401', 'sdadsadsa', '2021-07-23 15:35:48', 0),
+(128, 27, 'Nguyễn Văn Linh', 'dung@0401', 'a', '2021-07-23 17:25:54', 0),
+(129, 27, 'Nguyễn Văn Linh', 'dung@0401', 'sa', '2021-07-23 18:00:19', 0),
+(130, 30, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'sdadsadsa', '2021-08-02 11:53:04', 0),
+(131, 30, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'sdadsadsa', '2021-08-02 11:53:13', 1),
+(132, 30, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'sâsasa', '2021-08-02 11:57:16', 0),
+(133, 30, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'sdadsadsa', '2021-08-02 11:57:20', 0),
+(141, 30, 'admin', 'admin', 'đâsdas', '2021-08-02 12:41:15', 1),
+(142, 30, 'admin', 'admin', 'ấddasdas', '2021-08-02 13:32:31', 1),
+(143, 28, 'admin', 'admin', 'âsasaas', '2021-08-02 13:36:29', 1),
+(144, 30, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', 'saddssda', '2021-08-02 14:33:59', 0),
+(145, 30, 'admin', 'admin', 'aaa', '2021-08-02 14:37:51', 1),
+(146, 30, 'admin', 'admin', 'sssss', '2021-08-02 15:30:25', 1),
+(147, 30, 'admin', 'admin', 'a', '2021-08-02 21:33:39', 1),
+(148, 30, 'admin', 'admin', 'a', '2021-08-02 21:33:46', 1),
+(149, 27, 'admin', 'admin', 'oke', '2021-08-02 22:57:02', 1),
+(150, 28, 'admin', 'admin', 'ok', '2021-08-02 22:57:07', 1),
+(151, 30, 'admin', 'admin', 'oke', '2021-08-02 22:58:04', 1),
+(152, 28, 'admin', 'admin', 'a', '2021-08-02 23:07:32', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mggkhuvuc`
+-- Cấu trúc bảng cho bảng `mggkhuvuc`
 --
 
 CREATE TABLE `mggkhuvuc` (
@@ -629,7 +674,7 @@ CREATE TABLE `mggkhuvuc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `mggkhuvuc`
+-- Đang đổ dữ liệu cho bảng `mggkhuvuc`
 --
 
 INSERT INTO `mggkhuvuc` (`id`, `magiamgia`, `mucgiam`, `time_up`, `time_out`, `status`, `id_khuvuc`, `time`) VALUES
@@ -638,7 +683,7 @@ INSERT INTO `mggkhuvuc` (`id`, `magiamgia`, `mucgiam`, `time_up`, `time_out`, `s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mgguser`
+-- Cấu trúc bảng cho bảng `mgguser`
 --
 
 CREATE TABLE `mgguser` (
@@ -652,7 +697,7 @@ CREATE TABLE `mgguser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `mgguser`
+-- Đang đổ dữ liệu cho bảng `mgguser`
 --
 
 INSERT INTO `mgguser` (`id`, `id_user`, `status`, `magiamgia`, `mucgiam`, `time_out`, `time`) VALUES
@@ -661,7 +706,7 @@ INSERT INTO `mgguser` (`id`, `id_user`, `status`, `magiamgia`, `mucgiam`, `time_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phieugiamgia`
+-- Cấu trúc bảng cho bảng `phieugiamgia`
 --
 
 CREATE TABLE `phieugiamgia` (
@@ -676,16 +721,16 @@ CREATE TABLE `phieugiamgia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `phieugiamgia`
+-- Đang đổ dữ liệu cho bảng `phieugiamgia`
 --
 
 INSERT INTO `phieugiamgia` (`id`, `magiamgia`, `mucgiam`, `status`, `id_khachsan`, `time_up`, `time_out`, `time`) VALUES
-(11, 'MH370', 200000, '1', 4, '2021-07-24 15:22:00', '2021-07-31 15:22:00', '2021-07-23 15:22:17');
+(11, 'MH370', 200000, '1', 4, '2021-07-24 15:22:00', '2021-07-31 15:22:00', '2021-08-28 15:22:17');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `repcomment`
+-- Cấu trúc bảng cho bảng `repcomment`
 --
 
 CREATE TABLE `repcomment` (
@@ -700,30 +745,30 @@ CREATE TABLE `repcomment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `repmessage`
+-- Cấu trúc bảng cho bảng `repmessage`
 --
 
 CREATE TABLE `repmessage` (
   `id` int(11) NOT NULL,
-  `id_message` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` bit(2) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `repmessage`
+-- Đang đổ dữ liệu cho bảng `repmessage`
 --
 
-INSERT INTO `repmessage` (`id`, `id_message`, `id_user`, `message`, `time`) VALUES
-(11, 118, 28, 'oke chào bạn', '2021-07-20 00:20:22'),
-(15, 120, 28, 'mình rất vui được làm quen với bạn', '2021-07-21 20:53:22'),
-(16, 126, 27, 'oke chào bạn', '2021-07-23 15:35:40');
+INSERT INTO `repmessage` (`id`, `id_user`, `message`, `status`, `time`) VALUES
+(11, 28, 'oke chào bạn', b'00', '2021-07-20 00:20:22'),
+(15, 28, 'mình rất vui được làm quen với bạn', b'00', '2021-07-21 20:53:22'),
+(16, 27, 'oke chào bạn', b'00', '2021-07-23 15:35:40');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -738,7 +783,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `address`, `phone`, `avatar`, `time`) VALUES
@@ -747,24 +792,24 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `address`, `phone`, `avat
 (30, 'dũng trương mạnh', 'truongmanhdung04@gmail.com', '202cb962ac59075b964b07152d234b70', '', '0365727226', 'user.png', '2021-07-25 13:17:32');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `banner`
+-- Chỉ mục cho bảng `banner`
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `chitietkhachsan`
+-- Chỉ mục cho bảng `chitietkhachsan`
 --
 ALTER TABLE `chitietkhachsan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_khachsan` (`id_khachsan`);
 
 --
--- Indexes for table `comment`
+-- Chỉ mục cho bảng `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`),
@@ -772,49 +817,49 @@ ALTER TABLE `comment`
   ADD KEY `comment_ibfk_1` (`id_khachsan`);
 
 --
--- Indexes for table `datphong`
+-- Chỉ mục cho bảng `datphong`
 --
 ALTER TABLE `datphong`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_hs` (`id_hs`);
 
 --
--- Indexes for table `detailmessage`
+-- Chỉ mục cho bảng `detailmessage`
 --
 ALTER TABLE `detailmessage`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_message` (`id_message`);
 
 --
--- Indexes for table `doanhthu`
+-- Chỉ mục cho bảng `doanhthu`
 --
 ALTER TABLE `doanhthu`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_doitac` (`id_doitac`);
 
 --
--- Indexes for table `doanhthudoitac`
+-- Chỉ mục cho bảng `doanhthudoitac`
 --
 ALTER TABLE `doanhthudoitac`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_khachsan` (`id_khachsan`);
 
 --
--- Indexes for table `doitac`
+-- Chỉ mục cho bảng `doitac`
 --
 ALTER TABLE `doitac`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `donhang`
+-- Chỉ mục cho bảng `donhang`
 --
 ALTER TABLE `donhang`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_hs` (`id_hs`);
+  ADD KEY `id_hs` (`id_hs`),
+  ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `favourite`
+-- Chỉ mục cho bảng `favourite`
 --
 ALTER TABLE `favourite`
   ADD PRIMARY KEY (`id`),
@@ -822,7 +867,7 @@ ALTER TABLE `favourite`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `history`
+-- Chỉ mục cho bảng `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`id`),
@@ -830,14 +875,14 @@ ALTER TABLE `history`
   ADD KEY `history_ibfk_2` (`id_hs`);
 
 --
--- Indexes for table `imagechitietkhachsan`
+-- Chỉ mục cho bảng `imagechitietkhachsan`
 --
 ALTER TABLE `imagechitietkhachsan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `imagechitietkhachsan_ibfk_1` (`id_chitiet`);
 
 --
--- Indexes for table `khachsan`
+-- Chỉ mục cho bảng `khachsan`
 --
 ALTER TABLE `khachsan`
   ADD PRIMARY KEY (`id`),
@@ -845,47 +890,47 @@ ALTER TABLE `khachsan`
   ADD KEY `id_khuvuc` (`id_khuvuc`);
 
 --
--- Indexes for table `khuvuc`
+-- Chỉ mục cho bảng `khuvuc`
 --
 ALTER TABLE `khuvuc`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `maggall`
+-- Chỉ mục cho bảng `maggall`
 --
 ALTER TABLE `maggall`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `message`
+-- Chỉ mục cho bảng `message`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `mggkhuvuc`
+-- Chỉ mục cho bảng `mggkhuvuc`
 --
 ALTER TABLE `mggkhuvuc`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_khuvuc` (`id_khuvuc`);
 
 --
--- Indexes for table `mgguser`
+-- Chỉ mục cho bảng `mgguser`
 --
 ALTER TABLE `mgguser`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `phieugiamgia`
+-- Chỉ mục cho bảng `phieugiamgia`
 --
 ALTER TABLE `phieugiamgia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_khachsan` (`id_khachsan`);
 
 --
--- Indexes for table `repcomment`
+-- Chỉ mục cho bảng `repcomment`
 --
 ALTER TABLE `repcomment`
   ADD PRIMARY KEY (`id`),
@@ -894,256 +939,255 @@ ALTER TABLE `repcomment`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `repmessage`
+-- Chỉ mục cho bảng `repmessage`
 --
 ALTER TABLE `repmessage`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_message` (`id_message`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `banner`
+-- AUTO_INCREMENT cho bảng `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `chitietkhachsan`
+-- AUTO_INCREMENT cho bảng `chitietkhachsan`
 --
 ALTER TABLE `chitietkhachsan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `datphong`
+-- AUTO_INCREMENT cho bảng `datphong`
 --
 ALTER TABLE `datphong`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT for table `detailmessage`
+-- AUTO_INCREMENT cho bảng `detailmessage`
 --
 ALTER TABLE `detailmessage`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `doanhthu`
+-- AUTO_INCREMENT cho bảng `doanhthu`
 --
 ALTER TABLE `doanhthu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `doanhthudoitac`
+-- AUTO_INCREMENT cho bảng `doanhthudoitac`
 --
 ALTER TABLE `doanhthudoitac`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `doitac`
+-- AUTO_INCREMENT cho bảng `doitac`
 --
 ALTER TABLE `doitac`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `donhang`
+-- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT for table `favourite`
+-- AUTO_INCREMENT cho bảng `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `history`
+-- AUTO_INCREMENT cho bảng `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `imagechitietkhachsan`
+-- AUTO_INCREMENT cho bảng `imagechitietkhachsan`
 --
 ALTER TABLE `imagechitietkhachsan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
--- AUTO_INCREMENT for table `khachsan`
+-- AUTO_INCREMENT cho bảng `khachsan`
 --
 ALTER TABLE `khachsan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT for table `khuvuc`
+-- AUTO_INCREMENT cho bảng `khuvuc`
 --
 ALTER TABLE `khuvuc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `maggall`
+-- AUTO_INCREMENT cho bảng `maggall`
 --
 ALTER TABLE `maggall`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `message`
+-- AUTO_INCREMENT cho bảng `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
--- AUTO_INCREMENT for table `mggkhuvuc`
+-- AUTO_INCREMENT cho bảng `mggkhuvuc`
 --
 ALTER TABLE `mggkhuvuc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `mgguser`
+-- AUTO_INCREMENT cho bảng `mgguser`
 --
 ALTER TABLE `mgguser`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `phieugiamgia`
+-- AUTO_INCREMENT cho bảng `phieugiamgia`
 --
 ALTER TABLE `phieugiamgia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `repcomment`
+-- AUTO_INCREMENT cho bảng `repcomment`
 --
 ALTER TABLE `repcomment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `repmessage`
+-- AUTO_INCREMENT cho bảng `repmessage`
 --
 ALTER TABLE `repmessage`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `chitietkhachsan`
+-- Các ràng buộc cho bảng `chitietkhachsan`
 --
 ALTER TABLE `chitietkhachsan`
   ADD CONSTRAINT `chitietkhachsan_ibfk_1` FOREIGN KEY (`id_khachsan`) REFERENCES `khachsan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `comment`
+-- Các ràng buộc cho bảng `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_khachsan`) REFERENCES `khachsan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
--- Constraints for table `datphong`
+-- Các ràng buộc cho bảng `datphong`
 --
 ALTER TABLE `datphong`
   ADD CONSTRAINT `datphong_ibfk_1` FOREIGN KEY (`id_hs`) REFERENCES `khachsan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `detailmessage`
+-- Các ràng buộc cho bảng `detailmessage`
 --
 ALTER TABLE `detailmessage`
   ADD CONSTRAINT `detailmessage_ibfk_1` FOREIGN KEY (`id_message`) REFERENCES `message` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `doanhthu`
+-- Các ràng buộc cho bảng `doanhthu`
 --
 ALTER TABLE `doanhthu`
   ADD CONSTRAINT `doanhthu_ibfk_1` FOREIGN KEY (`id_doitac`) REFERENCES `doitac` (`id`);
 
 --
--- Constraints for table `doanhthudoitac`
+-- Các ràng buộc cho bảng `doanhthudoitac`
 --
 ALTER TABLE `doanhthudoitac`
   ADD CONSTRAINT `doanhthudoitac_ibfk_1` FOREIGN KEY (`id_khachsan`) REFERENCES `khachsan` (`id`);
 
 --
--- Constraints for table `donhang`
+-- Các ràng buộc cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  ADD CONSTRAINT `donhang_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `donhang_ibfk_3` FOREIGN KEY (`id_hs`) REFERENCES `khachsan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `donhang_ibfk_3` FOREIGN KEY (`id_hs`) REFERENCES `khachsan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `donhang_ibfk_4` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `favourite`
+-- Các ràng buộc cho bảng `favourite`
 --
 ALTER TABLE `favourite`
   ADD CONSTRAINT `favourite_ibfk_1` FOREIGN KEY (`id_khachsan`) REFERENCES `khachsan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `favourite_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `history`
+-- Các ràng buộc cho bảng `history`
 --
 ALTER TABLE `history`
   ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`id_dt`) REFERENCES `doitac` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `history_ibfk_2` FOREIGN KEY (`id_hs`) REFERENCES `khachsan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `imagechitietkhachsan`
+-- Các ràng buộc cho bảng `imagechitietkhachsan`
 --
 ALTER TABLE `imagechitietkhachsan`
   ADD CONSTRAINT `imagechitietkhachsan_ibfk_1` FOREIGN KEY (`id_chitiet`) REFERENCES `khachsan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `khachsan`
+-- Các ràng buộc cho bảng `khachsan`
 --
 ALTER TABLE `khachsan`
   ADD CONSTRAINT `khachsan_ibfk_1` FOREIGN KEY (`id_doitac`) REFERENCES `doitac` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `khachsan_ibfk_2` FOREIGN KEY (`id_khuvuc`) REFERENCES `khuvuc` (`id`);
 
 --
--- Constraints for table `message`
+-- Các ràng buộc cho bảng `message`
 --
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `mggkhuvuc`
+-- Các ràng buộc cho bảng `mggkhuvuc`
 --
 ALTER TABLE `mggkhuvuc`
   ADD CONSTRAINT `mggkhuvuc_ibfk_1` FOREIGN KEY (`id_khuvuc`) REFERENCES `khuvuc` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `mgguser`
+-- Các ràng buộc cho bảng `mgguser`
 --
 ALTER TABLE `mgguser`
   ADD CONSTRAINT `mgguser_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `phieugiamgia`
+-- Các ràng buộc cho bảng `phieugiamgia`
 --
 ALTER TABLE `phieugiamgia`
   ADD CONSTRAINT `phieugiamgia_ibfk_1` FOREIGN KEY (`id_khachsan`) REFERENCES `khachsan` (`id`);
 
 --
--- Constraints for table `repcomment`
+-- Các ràng buộc cho bảng `repcomment`
 --
 ALTER TABLE `repcomment`
   ADD CONSTRAINT `repcomment_ibfk_1` FOREIGN KEY (`id_comment`) REFERENCES `comment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1151,10 +1195,9 @@ ALTER TABLE `repcomment`
   ADD CONSTRAINT `repcomment_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
--- Constraints for table `repmessage`
+-- Các ràng buộc cho bảng `repmessage`
 --
 ALTER TABLE `repmessage`
-  ADD CONSTRAINT `repmessage_ibfk_1` FOREIGN KEY (`id_message`) REFERENCES `message` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `repmessage_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
