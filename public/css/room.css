@@ -1,278 +1,313 @@
 .slick-slide {
-    margin: 0 3px;
+	margin: 0 3px;
 }
 
 .slick-list {
-    box-sizing: border-box;
-    margin-left: -6px;
+	box-sizing: border-box;
+	margin-left: -6px;
 }
 
 .prev-slide,
 .next-slide {
-    width: 56px;
-    height: 56px;
-    border-radius: 56px;
-    background-color: #7977779a;
-    color: white;
-    display: grid;
-    place-items: center;
-    transform: translateY(-50%);
+	width: 56px;
+	height: 56px;
+	border-radius: 56px;
+	background-color: #7977779a;
+	color: white;
+	display: grid;
+	place-items: center;
+	transform: translateY(-50%);
 }
 
 .prev-slide {
-    left: 50px;
-    top: 50%;
+	left: 50px;
+	top: 50%;
 }
 
 .next-slide {
-    right: 50px;
-    top: 50%;
+	right: 50px;
+	top: 50%;
 }
 
 .prev-slide:hover,
 .next-slide:hover {
-    background-color: rgb(63, 62, 62);
-    cursor: pointer;
+	background-color: rgb(63, 62, 62);
+	cursor: pointer;
 }
 
 .slick-slide {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .wrapper:hover .slick-slide img {
-    opacity: 0.5;
-    cursor: pointer;
-    transition: all .52s ease;
+	opacity: 0.5;
+	cursor: pointer;
+	transition: all 0.52s ease;
 }
 
 .slide-hover:hover {
-    opacity: 1!important;
+	opacity: 1 !important;
 }
 
 .w-1189 {
-    max-width: 1189px!important;
-    margin: 0 auto;
+	max-width: 1189px !important;
+	margin: 0 auto;
 }
 
 .row {
-    padding: 0;
+	padding: 0;
 }
 
 ul {
-    padding: 0;
+	padding: 0;
 }
 
 .item_location {
-    color: black;
-    font-weight: 400;
+	color: black;
+	font-weight: 400;
 }
 
 .item_location:hover {
-    color: #f08204;
+	color: #f08204;
 }
 
 .share {
-    border: none;
-    background-color: transparent;
+	border: none;
+	background-color: transparent;
 }
 
-ion-icon[name=share-outline] {
-    font-size: 20px;
-    font-weight: 300;
+ion-icon[name="share-outline"] {
+	font-size: 20px;
+	font-weight: 300;
 }
 
 .discount {
-    width: 313px!important;
-    border-radius: 6px;
+	width: 313px !important;
+	border-radius: 6px;
 }
 
 .discount_content,
 .discount_title {
-    padding: 9px 11px;
+	padding: 9px 11px;
 }
 
 .discount_title {
-    background-color: #4a4a4a;
-    align-items: center;
-    font-weight: bold;
-    color: white;
-    border-radius: 7px 7px 0 0;
+	background-color: #4a4a4a;
+	align-items: center;
+	font-weight: bold;
+	color: white;
+	border-radius: 7px 7px 0 0;
 }
 
 .discount_content {
-    background-color: #f6f6f6;
-    border-radius: 0 0 7px 7px;
+	background-color: #f6f6f6;
+	border-radius: 0 0 7px 7px;
 }
 
 .discount span.position-absolute {
-    left: -10px;
-    background-color: #4a4a4a;
-    color: white;
-    border-radius: 5px;
-    padding: 2px 4px;
-    font-size: 12px;
-    transform: translateY(23px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease;
+	left: -10px;
+	background-color: #4a4a4a;
+	color: white;
+	border-radius: 5px;
+	padding: 2px 4px;
+	font-size: 12px;
+	transform: translateY(23px);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.2s ease;
 }
 
 .btn-copy {
-    border: none;
+	border: none;
 }
 
 .discount span.position-absolute.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(13px);
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(13px);
 }
 
 .utilities {
-    list-style: none;
+	list-style: none;
 }
 
 .utilities li i {
-    margin-right: 12px;
+	margin-right: 12px;
 }
 
 .utilities li {
-    flex-basis: 33.33%;
-    margin-top: 12px;
+	flex-basis: 33.33%;
+	margin-top: 12px;
 }
 
 .price_room {
-    padding: 12px 10px;
-    box-sizing: border-box;
+	padding: 12px 10px;
+	box-sizing: border-box;
 }
 
 .price_room.odd {
-    background-color: #f6f6f6;
+	background-color: #f6f6f6;
 }
 
 .price_room span.fw-bold.text-right {
-    font-weight: 500!important;
+	font-weight: 500 !important;
 }
 
 .datngay {
-    padding: 11px 120px;
-    margin: 10px 0;
-    background: linear-gradient( 90deg, #f65e38 0, #f68a39 51%, #f65e38);
-    background-size: 200% auto;
-    font-weight: bold;
-    color: white;
-    border: none;
-    border-radius: 8px;
+	padding: 11px 120px;
+	margin: 10px 0;
+	background: linear-gradient(90deg, #f65e38 0, #f68a39 51%, #f65e38);
+	background-size: 200% auto;
+	font-weight: bold;
+	color: white;
+	border: none;
+	border-radius: 8px;
 }
 
 .form_datngay input,
 .form_tuvan input {
-    width: 306px!important;
-    height: 42px!important;
-    border: 1px solid #dbdbdb!important;
-    padding-left: 10px;
-    box-sizing: border-box;
+	width: 306px !important;
+	height: 42px !important;
+	border: 1px solid #dbdbdb !important;
+	padding-left: 10px;
+	box-sizing: border-box;
 }
 
 .tuvan {
-    margin: 10px 0;
-    padding: 11px 75px;
-    border: none;
-    background: black;
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
+	margin: 10px 0;
+	padding: 11px 75px;
+	border: none;
+	background: black;
+	color: white;
+	font-weight: bold;
+	border-radius: 8px;
 }
 
 .tuvan:hover {
-    background: #f65e39;
-    transition: all linear .15s;
+	background: #f65e39;
+	transition: all linear 0.15s;
 }
 
 .chotuongtu img {
-    object-fit: cover;
-    border-radius: 3px;
+	object-fit: cover;
+	border-radius: 3px;
 }
 
 .detail-product {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 .fas.fa-star {
-    font-size: 13px;
+	font-size: 13px;
 }
 
 .star1 {
-    color: #ffb025;
+	color: #ffb025;
 }
 
 .star2 {
-    color: #e6e6e6;
+	color: #e6e6e6;
 }
 
 .name-product:hover {
-    color: #ffb025!important;
-    transition: all .25s linear;
+	color: #ffb025 !important;
+	transition: all 0.25s linear;
 }
 
 .modal2 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background-color: #fff;
-    transform: translate(-50%, -50%);
-    width: 376px;
-    height: 229px;
-    box-sizing: border-box;
-    padding: 20px;
-    z-index: 2;
-    display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	background-color: #fff;
+	transform: translate(-50%, -50%);
+	width: 376px;
+	height: 229px;
+	box-sizing: border-box;
+	padding: 20px;
+	z-index: 2;
+	display: none;
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    cursor: default;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.5);
+	cursor: default;
 }
 
-#share:checked+.modal2,
-#share:checked~.overlay {
-    display: block!important;
+#share:checked + .modal2,
+#share:checked ~ .overlay {
+	display: block !important;
 }
 
 .title.mt--60 {
-    margin: 0!important;
+	margin: 0 !important;
+	display: none;
+}
+td.disabled {
+	background-color: #f6f6f6 !important;
+	color: #cecece !important;
+}
+.cancel {
+	display: none;
+}
+#checkma123:checked ~ .check123456 .apply {
+	display: none;
+}
+#checkma123:checked ~ .check123456 .cancel {
+	display: block;
+}
+.border-bottom .phi123 {
+	display: none !important;
+}
+#checkma123:checked ~ .border-bottom .phi123 {
+	display: flex !important;
+}
+#checkma123:checked ~ .check123789 .tongtiencu {
+	display: none;
+}
+.tongtienmoi {
+	display: none;
+}
+#checkma123:checked ~ .check123789 .tongtienmoi {
+	display: block;
+}
+.border-comment {
+	border-radius: 16px;
+	padding: 5px 10px;
+}
+.comment-show {
+	position: relative;
+}
+.comment-icon {
+	position: absolute;
+	bottom: -23px;
+	left: 60px;
+}
+.like {
+	position: absolute;
+	font-size: 16px;
+	border-radius: 8px;
+    bottom: -8px;
+    right: -22px;
+    padding: 0 5px;
+}
+.like i {
+	color: blue;
+}
+.likecheck:checked ~ .like_up{
+    color: blue;
+}
+.likerepcheck:checked ~ .like_out{
+    color: blue;
+}
+.repcomment{
     display: none;
 }
-td.disabled{
-    background-color: #f6f6f6 !important;
-    color: #cecece !important;
-}
-.cancel{
-    display: none;
-}
-#checkma123:checked ~ .check123456 .apply{
-    display: none;
-}
-#checkma123:checked ~ .check123456 .cancel{
-    display: block;
-}
-.border-bottom .phi123{
-    display: none!important;
-}
-#checkma123:checked ~ .border-bottom .phi123{
-    display: flex!important;
-}
-#checkma123:checked ~ .check123789 .tongtiencu{
-    display: none;
-}
-.tongtienmoi{
-    display: none;
-}
-#checkma123:checked ~ .check123789 .tongtienmoi{
+.show-rep:checked ~.repcomment{
     display: block;
 }

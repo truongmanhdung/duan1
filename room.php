@@ -78,162 +78,66 @@ if ($result_kv->num_rows > 0) {
             </div>
 
             <?php
-            $sql_timeall = "SELECT * FROM maggall LIMIT 1";
-            $result_timeall = $conn->query($sql_timeall);
-            if(isset($_COOKIE['user'])){
-                $sql_time3 = "SELECT * FROM mgguser WHERE id_user = $id LIMIT 1";
+
+            if (isset($_COOKIE['user'])) {
+                $sql_time3 = "SELECT * FROM mgguser WHERE id_user = $id ORDER BY time DESC LIMIT 1";
                 $result_time3 = $conn->query($sql_time3);
-                $sql_time = "SELECT * FROM phieugiamgia WHERE id_khachsan = $id_hs LIMIT 1";
-                $sql_time2 = "SELECT * FROM mggkhuvuc WHERE id_khuvuc = $id_khuvuc LIMIT 1";
+                $sql_time = "SELECT * FROM phieugiamgia WHERE id_khachsan = $id_hs ORDER BY time DESC LIMIT 1";
+                $sql_time2 = "SELECT * FROM mggkhuvuc WHERE id_khuvuc = $id_khuvuc ORDER BY time DESC LIMIT 1";
                 $result_time = $conn->query($sql_time);
                 $result_time2 = $conn->query($sql_time2);
+                $sql_timeall = "SELECT * FROM maggall ORDER BY time DESC LIMIT 1";
+                $result_timeall = $conn->query($sql_timeall);
+                $sql_ok = '';
+                $loaigiamgia = '';
+
+
+                if ($result_timeall->num_rows > 0) {
+                    while ($row_time = $result_timeall->fetch_assoc()) {
+                        $time_out = $row_time['time_out'];
+                        if (strtotime($time_out) - strtotime($today) > 0) {
+                            $loaigiamgia = "all";
+                            $sql_ok =  $sql_timeall;
+                        }
+                    }
+                }
+                if ($result_time3->num_rows > 0) {
+                    while ($row_time = $result_time3->fetch_assoc()) {
+                        $time_out = $row_time['time_out'];
+                        if (strtotime($time_out) - strtotime($today) > 0) {
+                            $sql_ok =  $sql_time3;
+                            $loaigiamgia = "user";
+                        }
+                    }
+                }
+
+                if ($result_time2->num_rows > 0) {
+                    while ($row_time = $result_time2->fetch_assoc()) {
+                        $time_out = $row_time['time_out'];
+                        if (strtotime($time_out) - strtotime($today) > 0) {
+                            $sql_ok =  $sql_time2;
+                            $loaigiamgia = "khuvuc";
+                        }
+                    }
+                }
                 if ($result_time->num_rows > 0) {
-                    $loaigiamgia = "homestay";
-                    echo '<div class="discount">
-                        <div class="discount_title d-flex justify-content-between">
-                            <p class="mb-0 bold">
-                                FLASH SALE
-                            </p>
-                            <div class="countdown bold"><span id="days" class="dd">20</span> ngày
-                                <span class="hh" id="hours">00</span>:
-                                <span class="mm" id="minutes">16</span>:
-                                <span class="ss" id="seconds">07</span>
-                            </div>
-                        </div>';
                     while ($row_time = $result_time->fetch_assoc()) {
+                        $time_out = $row_time['time_out'];
+                        if (strtotime($time_out) - strtotime($today) > 0) {
+                            $sql_ok =  $sql_time;
+                            $loaigiamgia = "homestay";
+                        }
+                    }
+                }
+
+                $result123 = $conn->query($sql_ok);
+                if ($result123->num_rows > 0) {
+                    while ($row_time = $result123->fetch_assoc()) {
                         $time_out = $row_time['time_out'];
                         $magiamgia = $row_time['magiamgia'];
                         $status = $row_time['status'];
                         $mucgiam = $row_time['mucgiam'];
                     }
-                    echo '<script>
-                        (function() {
-                            const second = 1000,
-                            minute = second * 60,
-                            hour = minute * 60,
-                            day = hour * 24;
-                        
-                            let birthday = "' . $time_out . '",
-                                countDown = new Date(birthday).getTime(),
-                                x = setInterval(function() {
-                                    let now = new Date().getTime(),
-                                    distance = countDown - now;
-                                    document.getElementById("days").innerText = `0${Math.floor(distance / (day))}`.slice(-2),
-                                    document.getElementById("hours").innerText = `0${Math.floor((distance % (day)) / (hour))}`.slice(-2),
-                                    document.getElementById("minutes").innerText =  `0${Math.floor((distance % (hour)) / (minute))}`.slice(-2),
-                                    document.getElementById("seconds").innerText = `0${Math.floor((distance % (minute)) / (second))}`.slice(-2);
-                        
-                                    if (distance < 0) {
-                                        if (distance < 0) {
-                                            document.querySelector(".discount").remove();         
-                                            document.querySelector("#show_intro").classList.remove("mt-5");        
-                                            window.clearTimeout(x);
-                                    }
-                                    }
-                                    //seconds
-                                }, 0)
-                        }());
-                        </script>
-                        <div class="discount_content d-flex justify-content-between" style="font-size: 14px;">
-                        <div class="discount_description">
-                            <div class="discount_detail">Giảm giá <strong>
-                                    <font color="#FF0037">';
-                    if ($status == 1) {
-                        echo number_format($mucgiam) . 'đ';
-                    } else {
-                        echo $mucgiam . '%';
-                    }
-                ?></font>
-                    </strong> - Mã: <strong style="color: #FF0037;">
-                        <font color="#FF0037" id="code_copy4"><?= $magiamgia ?></font>
-                    </strong><br>Ngày check-in: <strong><?= $time_out ?></strong>
-            </div>
-            <div class="copy-txt"></div>
-        </div>
-        <div class="position-relative">
-            <button onclick="copy('#code_copy4')" class="btn-copy"><img src="./public/image/copy.svg" width="24" alt=""></button>
-            <span class="copied position-absolute">copied</span>
-        </div>
-    </div>
-    </div>
-    
-    <?php
-                } else if ($result_time2->num_rows > 0) {
-                    $loaigiamgia = "khuvuc";
-                    echo '<div class="discount">
-                        <div class="discount_title d-flex justify-content-between">
-                            <p class="mb-0 bold">
-                                FLASH SALE
-                            </p>
-                            <div class="countdown bold"><span id="days" class="dd">20</span> ngày
-                                <span class="hh" id="hours">00</span>:
-                                <span class="mm" id="minutes">16</span>:
-                                <span class="ss" id="seconds">07</span>
-    </div>
-                        </div>';
-                    while ($row_time2 = $result_time2->fetch_assoc()) {
-                        $time_out = $row_time2['time_out'];
-                        $magiamgia = $row_time2['magiamgia'];
-                        $status = $row_time2['status'];
-                        $mucgiam = $row_time2['mucgiam'];
-                    }
-                    echo '<script>
-                        (function() {
-                            const second = 1000,
-                                minute = second * 60,
-                                hour = minute * 60,
-                                day = hour * 24;
-                        
-                            let birthday = "' . $time_out . '",
-                                countDown = new Date(birthday).getTime(),
-                                x = setInterval(function() {
-                                    
-                                    let now = new Date().getTime(),
-                                        distance = countDown - now;
-                        
-                                    document.getElementById("days").innerText = `0${Math.floor(distance / (day))}`.slice(-2),
-                                        document.getElementById("hours").innerText = `0${Math.floor((distance % (day)) / (hour))}`.slice(-2),
-                                        document.getElementById("minutes").innerText =  `0${Math.floor((distance % (hour)) / (minute))}`.slice(-2),
-                                        document.getElementById("seconds").innerText = `0${Math.floor((distance % (minute)) / (second))}`.slice(-2);
-                        
-                                    //do something later when date is reached
-                                    if (distance < 0) {
-                                        if (distance < 0) {
-                                            document.querySelector(".discount").remove();         
-                                            document.querySelector("#show_intro").classList.remove("mt-5");        
-                                            window.clearTimeout(x);
-                                    }
-                                    }
-                                    //seconds
-                                }, 0)
-                        }());
-                        </script>
-                        <div class="discount_content d-flex justify-content-between" style="font-size: 14px;">
-                        <div class="discount_description">
-                            <div class="discount_detail">Giảm giá <strong>
-                                    <font color="#FF0037">';
-                    if ($status == 1) {
-                        echo number_format($mucgiam) . 'đ';
-                    } else {
-                        echo $mucgiam . '%';
-                    }
-    ?></font>
-        </strong> - Mã: <strong style="color: #FF0037;">
-            <font color="#FF0037" id="code_copy4"><?= $magiamgia ?></font>
-        </strong><br>Ngày check-in: <strong><?= $time_out ?></strong></div>
-        <div class="copy-txt"></div>
-        </div>
-        <div class="position-relative">
-            <button onclick="copy('#code_copy4')" class="btn-copy"><img src="./public/image/copy.svg" width="24" alt=""></button>
-            <span class="copied position-absolute">copied</span>
-        </div>
-        </div>
-        </div>
-    
-    <?php
-    
-                } else if ($result_time3->num_rows > 0) {
-                    $loaigiamgia = "user";
                     echo '<div class="discount">
                         <div class="discount_title d-flex justify-content-between">
                             <p class="mb-0 bold">
@@ -245,32 +149,23 @@ if ($result_kv->num_rows > 0) {
                                 <span class="ss" id="seconds">07</span>
                             </div>
                         </div>';
-                    while ($row_time3 = $result_time3->fetch_assoc()) {
-                        $time_out = $row_time3['time_out'];
-                        $magiamgia = $row_time3['magiamgia'];
-                        $status = $row_time3['status'];
-                        $mucgiam = $row_time3['mucgiam'];
-                    }
                     echo '<script>
                         (function() {
                             const second = 1000,
-                                minute = second * 60,
-                                hour = minute * 60,
-                                day = hour * 24;
+                            minute = second * 60,
+                            hour = minute * 60,
+                            day = hour * 24;
                         
                             let birthday = "' . $time_out . '",
                                 countDown = new Date(birthday).getTime(),
                                 x = setInterval(function() {
-                                    
                                     let now = new Date().getTime(),
-                                        distance = countDown - now;
-                        
+                                    distance = countDown - now;
                                     document.getElementById("days").innerText = `0${Math.floor(distance / (day))}`.slice(-2),
-    document.getElementById("hours").innerText = `0${Math.floor((distance % (day)) / (hour))}`.slice(-2),
-                                        document.getElementById("minutes").innerText =  `0${Math.floor((distance % (hour)) / (minute))}`.slice(-2),
-                                        document.getElementById("seconds").innerText = `0${Math.floor((distance % (minute)) / (second))}`.slice(-2);
+                                    document.getElementById("hours").innerText = `0${Math.floor((distance % (day)) / (hour))}`.slice(-2),
+                                    document.getElementById("minutes").innerText =  `0${Math.floor((distance % (hour)) / (minute))}`.slice(-2),
+                                    document.getElementById("seconds").innerText = `0${Math.floor((distance % (minute)) / (second))}`.slice(-2);
                         
-                                    //do something later when date is reached
                                     if (distance < 0) {
                                         if (distance < 0) {
                                             document.querySelector(".discount").remove();         
@@ -286,105 +181,29 @@ if ($result_kv->num_rows > 0) {
                         <div class="discount_description">
                             <div class="discount_detail">Giảm giá <strong>
                                     <font color="#FF0037">';
-    
-                    echo number_format($mucgiam) . 'đ';
-    
-    ?></font>
-        </strong> - Mã: <strong style="color: #FF0037;">
-            <font color="#FF0037" id="code_copy4"><?= $magiamgia ?></font>
-        </strong><br>Ngày check-in: <strong><?= $time_out ?></strong></div>
+                    if ($status == 1) {
+                        echo number_format($mucgiam) . 'đ';
+                    } else {
+                        echo $mucgiam . '%';
+                    }
+            ?></font>
+                    </strong> - Mã: <strong style="color: #FF0037;">
+                        <font color="#FF0037" id="code_copy4"><?= $magiamgia ?></font>
+                    </strong><br>Ngày check-in: <strong><?= $time_out ?></strong>
+        </div>
         <div class="copy-txt"></div>
-        </div>
-        <div class="position-relative">
-            <button onclick="copy('#code_copy4')" class="btn-copy"><img src="./public/image/copy.svg" width="24" alt=""></button>
-            <span class="copied position-absolute">copied</span>
-        </div>
-        </div>
-        </div>
-    
-    <?php
-    
-                
-            }
-            
-            } else{
-                $loaigiamgia = "all";
-                echo '<div class="discount">
-                    <div class="discount_title d-flex justify-content-between">
-                        <p class="mb-0 bold">
-                            FLASH SALE
-</p>
-                        <div class="countdown bold"><span id="days" class="dd">20</span> ngày
-                            <span class="hh" id="hours">00</span>:
-                            <span class="mm" id="minutes">16</span>:
-                            <span class="ss" id="seconds">07</span>
-                        </div>
-                    </div>';
-                while ($row_timeall = $result_timeall->fetch_assoc()) {
-                    $time_out = $row_timeall['time_out'];
-                    $magiamgia = $row_timeall['magiamgia'];
-                    $status = $row_timeall['status'];
-                    $mucgiam = $row_timeall['mucgiam'];
-                }
-                echo '<script>
-                    (function() {
-                        const second = 1000,
-                            minute = second * 60,
-                            hour = minute * 60,
-                            day = hour * 24;
-                    
-                        let birthday = "' . $time_out . '",
-                            countDown = new Date(birthday).getTime(),
-                            x = setInterval(function() {
-                                
-                                let now = new Date().getTime(),
-                                    distance = countDown - now;
-                    
-                                document.getElementById("days").innerText = `0${Math.floor(distance / (day))}`.slice(-2),
-                                    document.getElementById("hours").innerText = `0${Math.floor((distance % (day)) / (hour))}`.slice(-2),
-                                    document.getElementById("minutes").innerText =  `0${Math.floor((distance % (hour)) / (minute))}`.slice(-2),
-                                    document.getElementById("seconds").innerText = `0${Math.floor((distance % (minute)) / (second))}`.slice(-2);
-                    
-                                //do something later when date is reached
-                                if (distance < 0) {
-                                    if (distance < 0) {
-                                        document.querySelector(".discount").remove();         
-                                        document.querySelector("#show_intro").classList.remove("mt-5");        
-                                        window.clearTimeout(x);
-                                }
-                                }
-                                //seconds
-                            }, 0)
-                    }());
-                    </script>
-                    <div class="discount_content d-flex justify-content-between" style="font-size: 14px;">
-                    <div class="discount_description">
-                        <div class="discount_detail">Giảm giá <strong>
-                                <font color="#FF0037">';
-                if ($status == 1) {
-                    echo number_format($mucgiam) . 'đ';
-                } else {
-                    echo $mucgiam . '%';
-                }
-?></font>
-    </strong> - Mã: <strong style="color: #FF0037;">
-        <font color="#FF0037" id="code_copy4"><?= $magiamgia ?></font>
-    </strong><br>Ngày check-in: <strong><?= $time_out ?></strong></div>
-    <div class="copy-txt"></div>
     </div>
     <div class="position-relative">
         <button onclick="copy('#code_copy4')" class="btn-copy"><img src="./public/image/copy.svg" width="24" alt=""></button>
         <span class="copied position-absolute">copied</span>
     </div>
-    </div>
-    </div>
-
+</div>
+</div>
 <?php
+                }
             }
 
 ?>
-
-
 <?php
 $sql_chitiet = "SELECT * FROM chitietkhachsan where id_khachsan = $id_hs";
 $result_chitiet = $conn->query($sql_chitiet);
@@ -438,19 +257,204 @@ if ($result_chitiet->num_rows > 0) {
     <span class="">Số đêm tối đa</span>
     <span class="fw-bold text-right">90 đêm</span>
 </div>
-<h3 style="font-size: 28px;">Đánh giá</h3>
-<div class="d-flex align-items-center my-3">
-    <img src="https://graph.facebook.com/v3.0/266508325147561/picture?type=normal" width="48" height="48" class="review__avatar">
-    <div class="ms-2">
-        <h5 style="font-size: 13.28px;" class="m-0">
-            Đặng Châu ·<i class="fas fa-star ps-1" style="color:#ffb025"></i><i class="fas fa-star ps-1" style="color:#ffb025"></i><i class="fas fa-star ps-1" style="color:#ffb025"></i><i class="fas fa-star ps-1" style="color:#ffb025"></i>
-            <i class="fas fa-star " style="color:#e6e6e6"></i>
-        </h5>
-        <span style="font-size: 13.28px;">3 months</span>
+<div class="comment">
+    <h3 style="font-size: 28px; margin: 20px 0">Bình luận</h3>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="comment-123 pb-5">
+        <?php 
+            $sql_comment = "SELECT * FROM comment WHERE id_khachsan = $id_hs";
+            $result_comment = $conn->query($sql_comment);
+            if($result_comment->num_rows > 0){
+                while($row_commnent = $result_comment->fetch_assoc()){
+                    $id_user = $row_commnent['id_user'];
+                    $sql_user = "SELECT * FROM user WHERE id=$id_user";
+                    $result_user = $conn->query($sql_user);
+                    if($result_user->num_rows > 0){
+                        while($row_user = $result_user->fetch_assoc()){
+                            $name_user = $row_user['name'];
+                            $avatar = $row_user['avatar'];
+                        }
+                    }
+                    $id_comment = $row_commnent['id'];
+                    $comment = $row_commnent['comment'];
+                    $time = $row_commnent['time'];
+                    $love = $row_commnent['love'];
+                    $solike = $row_commnent['solike']
+                    ?>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 my-4">
+                        <div class="d-flex align-items-center comment-show my-3">
+                            <img src="./public/image/user/<?= $avatar ?>" width="48" height="48" style="object-fit: cover" class="rounded-circle">
+                            <div class=" mx-2 border-comment comment-show bg-light">
+                                <strong><?= $name_user ?></strong>
+                                <p><?=  $comment ?></p>
+
+                                <?php 
+                                    if($solike>0){
+                                        echo '<div class="like bg-light">
+                                        <i class="fas fa-thumbs-up"></i><span id="solikecomment'.$id_comment.'">'.$solike.'</span>
+                                    </div>';
+                                    }else{
+                                        echo '<div class="like bg-light">
+                                        <i class="fas fa-thumbs-up"></i><span id="solikecomment'.$id_comment.'">'.$solike.'</span>
+                                    </div>';
+                                    }
+                                ?>
+                            </div>
+                            <div class="ms-2 comment-icon">
+                                <span class="d-none lovecheckoke<?=$id_comment?>"><?=$love?></span>
+                                <input type="checkbox" <?php 
+                                            if($love==1){
+                                                echo 'checked';
+                                            }
+                                        ?> hidden id="likecomment<?=$id_comment?>" class="likecheck">
+                                <label for="likecomment<?=$id_comment?>" class="likecomment<?=$id_comment?> like_up" style="font-size: 13.28px;">Thích</label>
+                                <i class="fas fa-circle" style="font-size: 6px"></i>
+                                <label for="show-rep<?=$id_comment?>" style="font-size: 13.28px;">Phản hồi</label>
+                                <i class="fas fa-circle" style="font-size: 6px"></i>
+                                <span style="font-size: 13.28px;"><?= $time ?></span>
+                                <script>
+                                    $(document).ready(function () {
+                                        $(".likecomment<?=$id_comment?>").click(function (e) { 
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "like.php",
+                                                data: "love="+Number($(".lovecheckoke<?=$id_comment?>").html())+"&&solike="+Number($("#solikecomment<?=$id_comment?>").html())+"&&id_comment="+<?=$id_comment?>,
+                                                success: function (response) {
+                                                    const data = response.split("/");
+                                                    $(".lovecheckoke<?=$id_comment?>").html(data[1]);
+                                                    $("#solikecomment<?=$id_comment?>").html(data[0])
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <input hidden type="checkbox" class="show-rep" id="show-rep<?=$id_comment?>">
+                        <div class="repcomment my-4">
+                            <form action="" method="post">
+                                <input type="text" name="repcomment<?=$id_comment?>" class="form-control" placeholder="trả lời <?= $name_user ?>">
+                                <button type="submit" name="repcomment_submit<?=$id_comment?>" class="btn btn-primary my-2">Trả lời</button>
+                                <label for="show-rep<?=$id_comment?>" class="btn btn-danger my-2">Hủy</label>
+                            </form>
+                            <?php 
+                                if(isset($_POST['repcomment_submit'.$id_comment.''])){
+                                    $repcomment123 = $_POST['repcomment'.$id_comment.''];
+                                    $sqlrepcomment123 = "INSERT INTO repcomment VALUES (null,$id_comment,$id,$id_hs,'$repcomment123',0,0,'$today')";
+                                    $resultrepcomment123 = $conn->query($sqlrepcomment123);
+                                    if($resultrepcomment123){
+                                        echo '
+                                                <script>alert("Đã trả lời thành công")</script>
+                                                <script>location.href="room.php?id=' . $id_hs . '"</script>
+                                            ';
+                                    }
+                                }
+                            ?>
+                        </div>
+                    <?php
+                    $sql_repcomment = "SELECT * FROM repcomment WHERE id_comment=$id_comment";
+                    $result_repcomment = $conn->query($sql_repcomment);
+                    if($result_repcomment->num_rows > 0){
+                        while ($row_repcom = $result_repcomment->fetch_assoc()){
+                            $id_user_rep = $row_repcom['id_user'];
+                            $id_rep_rep = $row_repcom['id'];
+                            $id_hs = $row_repcom['id_khachsan'];
+                            $repcomment = $row_repcom['repcomment'];
+                            $time_rep = $row_repcom['time'];
+                            $love_rep = $row_repcom['love'];
+                            $like_rep = $row_repcom['solike'];
+                            $sql_user_rep = "SELECT * FROM user WHERE id = $id_user_rep";
+                            $result_user_rep = $conn->query($sql_user_rep);
+                            if($result_user_rep->num_rows > 0){
+                                while($row_user_rep = $result_user_rep->fetch_assoc()){
+                                    $name_user_rep = $row_user_rep['name'];
+                                    $avatar_rep = $row_user_rep['avatar'];
+                                }
+                            }
+                            ?>
+                                <div class="d-flex align-items-center comment-show ms-5 mt-4">
+                                <img src="./public/image/user/<?= $avatar_rep ?>" width="48" height="48" style="object-fit: cover" class="rounded-circle">
+                                    <div class=" mx-2 border-comment comment-show bg-light">
+                                        <strong><?= $name_user_rep ?></strong>
+                                        <p><?= $repcomment ?></p>
+                                        <?php 
+                                            if($like_rep>0){
+                                                echo '<div class="like bg-light">
+                                                <i class="fas fa-thumbs-up"></i><span id="rep_likeoke'.$id_rep_rep.'">'.$like_rep.'</span>
+                                            </div>';
+                                            }else if($like_rep==0){
+                                                echo '<div class="like bg-light">
+                                                <i class="fas fa-thumbs-up"></i><span id="rep_likeoke'.$id_rep_rep.'">0</span>
+                                            </div>';
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class="ms-2 comment-icon">
+                                        <span class="d-none rep_love12<?= $id_rep_rep?>"><?= $love_rep ?></span>
+                                        <input type="checkbox" hidden id="likerepcheck<?= $id_rep_rep?>" <?php 
+                                            if($love_rep==1){
+                                                echo 'checked';
+                                            }
+                                        ?> class="likerepcheck">
+                                        <label for="likerepcheck<?= $id_rep_rep?>" class="like_out like_rep<?= $id_rep_rep?>" style="font-size: 13.28px;">Thích</label>
+                                        <i class="fas fa-circle" style="font-size: 6px"></i>
+                                        <span style="font-size: 13.28px;"><?= $time_rep ?></span>
+                                        <script>
+                                            $(document).ready(function () {
+                                                $(".like_rep<?= $id_rep_rep?>").click(function (e) { 
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: "likerep.php",
+                                                        data: "love="+Number($(".rep_love12<?= $id_rep_rep?>").html())+"&&solike="+Number($("#rep_likeoke<?=$id_rep_rep?>").html())+"&&id_rep="+<?=$id_rep_rep?>,
+                                                        success: function (response) {
+                                                            const data = response.split("/");
+                                                            $(".rep_love12<?= $id_rep_rep?>").html(data[1]);
+                                                            $("#rep_likeoke<?= $id_rep_rep?>").html(data[0])
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                    </div>
+                    <?php
+                }
+            }
+        ?>
+        
     </div>
-</div>
-<div class="danhgia">
-    Phòng đầy đủ tiện nghi, giá cả hợp lý
+
+
+    <?php
+    if (isset($_COOKIE['user'])) {
+        echo '<div class="commnet_add my-5">
+                <h3 class="form-label my-3" for="text-index">Nhập bình luận của bạn</h3>
+                <form action="" method="post">
+                    <input type="text" name="comment1" id="text-index" class="form-control">
+                    <button type="submit" name="submit_comment" class="btn btn-primary my-2">Bình luận</button>
+                </form>
+            </div>';
+        if (isset($_POST['submit_comment'])) {
+            $comment1 = $_POST['comment1'];
+            $sql_comment1 = "INSERT INTO comment VALUES (null,$id,$id_hs,'$comment1',0,0,'$today')";
+            $result_comment1 = $conn->query($sql_comment1);
+            if ($result_comment1) {
+                echo '
+                        <script>alert("Đã comment thành công")</script>
+                        <script>location.href="room.php?id=' . $id_hs . '"</script>
+                    ';
+            }
+        }
+    } else {
+        echo '<h5>Hãy đăng nhập để bình luận</h5>';
+    }
+
+    ?>
 </div>
 <h3 style="font-size: 28px;" class="my-3">Nội quy và chính sách về chỗ ở</h3>
 <h4 style="font-size: 23px;" class="my-3">
@@ -496,14 +500,13 @@ if ($result_chitiet->num_rows > 0) {
         <div class="d-flex">
             <input type="text" name="datefilter2" id="datefilter23" placeholder="Ngày" class="input-date" autocomplete="off" />
             <script>
-               
                 $(function() {
                     var today = new Date();
                     var a = [];
                     var b = [];
-                    var giaphong = <?=$giaphong?>;
-                    var magiamgia = "<?php echo $magiamgia?>";
-                    var loaigiamgia = "<?php echo $loaigiamgia?>";
+                    var giaphong = <?= $giaphong ?>;
+                    var magiamgia = "<?php echo $magiamgia ?>";
+                    var loaigiamgia = "<?php echo $loaigiamgia ?>";
                     <?php
                     $sql_hoadon = "SELECT * FROM donhang WHERE id_hs=$id_hs";
                     $result_hoadon = $conn->query($sql_hoadon);
@@ -538,14 +541,14 @@ if ($result_chitiet->num_rows > 0) {
                         }
                     });
                     // console.log(giaphong)
-                    
+
                     $('input[name="datefilter2"]').on('apply.daterangepicker', function(ev, picker) {
                         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
                         $.ajax({
                             type: "POST",
                             url: "tinhtoan.php",
-                            data: "date="+$(this).val()+"&&giaphong="+giaphong+"&&magiamgia="+magiamgia + "&&loaigiamgia="+loaigiamgia,
-                            success: function (response) {
+                            data: "date=" + $(this).val() + "&&giaphong=" + giaphong + "&&magiamgia=" + magiamgia + "&&loaigiamgia=" + loaigiamgia,
+                            success: function(response) {
                                 $(".showmagiamgia").html(response)
                             }
                         });
@@ -555,19 +558,17 @@ if ($result_chitiet->num_rows > 0) {
                         $(this).val('');
                     });
                 });
-                
-               
             </script>
-            
+
         </div>
         <div class="showmagiamgia">
-            
+
         </div>
         <button class="datngay" type="submit" name="datngay">Đặt ngay</button>
     </form>
     <?php
     if (isset($_POST['datngay'])) {
-        
+
         $check = $_POST['datefilter2'];
         $check_in = substr($check, 0, -13);
         $check_out = substr($check, 13, 23);
@@ -576,28 +577,27 @@ if ($result_chitiet->num_rows > 0) {
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
         $mahoadon =  substr(str_shuffle($permitted_chars), 0, 10);
         $tongtien = $giaphong * $songay + $phidichvu;
-        if(isset($_POST['checkma123'])){
+        if (isset($_POST['checkma123'])) {
             $checkma123 = $_POST['checkma123'];
-            if($status==1){
+            if ($status == 1) {
                 $tongtien = $giaphong * $songay + $phidichvu - $mucgiam;
-            }else{
-                $tongtien = $giaphong * $songay + $phidichvu - $mucgiam*$giaphong*$songay/100;
+            } else {
+                $tongtien = $giaphong * $songay + $phidichvu - $mucgiam * $giaphong * $songay / 100;
             }
             $sql_donhang = "INSERT INTO datphong VALUES (null,$id_hs,'$mahoadon',$tongtien,'$check_in','$check_out','$today','$magiamgia','$loaigiamgia')";
-        
+
             $result_donhang = $conn->query($sql_donhang);
             if ($result_donhang) {
                 header("location: thanhtoan.php?mahoadon=$mahoadon");
             }
-        }else{
+        } else {
             $sql_donhang = "INSERT INTO datphong VALUES (null,$id_hs,'$mahoadon',$tongtien,'$check_in','$check_out','$today','','')";
-            
+
             $result_donhang = $conn->query($sql_donhang);
             if ($result_donhang) {
                 header("location: thanhtoan.php?mahoadon=$mahoadon");
             }
         }
-        
     }
     ?>
     <form class="p-3 border form_tuvan my-3">
