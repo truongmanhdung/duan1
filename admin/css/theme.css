@@ -14758,3 +14758,9 @@ th{
     vertical-align: middle !important;
     text-align: justify !important;
 }
+.show_repadmin{
+    display: none;
+}
+.check_form:checked ~ .show_repadmin{
+    display: block;
+}

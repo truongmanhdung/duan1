@@ -4,20 +4,18 @@ include 'header.php';
 <?php
 if (isset($_GET["mahoadon"])) {
     $mahoadon = $_GET["mahoadon"];
-    $sql_hd = "SELECT * FROM datphong WHERE madatphong='$mahoadon'";
+    $sql_hd = "SELECT * FROM donhang WHERE mahoadon='$mahoadon'";
     $result_hd = $conn->query($sql_hd);
     if ($result_hd->num_rows > 0) {
         while ($row_hd = $result_hd->fetch_assoc()) {
             $id_hs = $row_hd['id_hs'];
             $tongtien = $row_hd['tongtien'];
-            $time_up = $row_hd['time_up'];
-            $time_out = $row_hd['time_out'];
-            $magiamgia = $row_hd['magiamgia'];
+            $time_up = $row_hd['checkin'];
+            $time_out = $row_hd['checkout'];
             $songay = (strtotime($time_out) - strtotime($time_up)) / 86400;
-            $phidichvu = 100000 * $songay;
-            $loaigiamgia = $row_hd['loaigiamgia'];
             $sql_hs = "SELECT * FROM khachsan where id=$id_hs";
             $result_hs = $conn->query($sql_hs);
+            $phidichvu = 100000 * $songay;
             if ($result_hs->num_rows > 0) {
                 while ($row_hs = $result_hs->fetch_assoc()) {
                     $name_hs = $row_hs['name'];
@@ -26,30 +24,6 @@ if (isset($_GET["mahoadon"])) {
                     $image_hs = $row_hs['image'];
                     $price_hs = $row_hs['price'];
                     $sophong_hs = $row_hs['sophong'];
-                }
-            }
-
-            if (!empty($loaigiamgia)) {
-                if ($loaigiamgia == "homestay") {
-                    $sql_ma = "SELECT * FROM phieugiamgia WHERE magiamgia = '$magiamgia'";
-                } else if ($loaigiamgia == "all") {
-                    $sql_ma = "SELECT * FROM maggall WHERE magiamgia = '$magiamgia'";
-                } else if ($loaigiamgia == "user") {
-                    $sql_ma = "SELECT * FROM mgguser WHERE magiamgia = '$magiamgia' and id_user = $id";
-                } else if ($loaigiamgia == "khuvuc") {
-                    $sql_ma = "SELECT * FROM mggkhuvuc WHERE magiamgia = '$magiamgia'";
-                }
-                $result_ma = $conn->query($sql_ma);
-                if ($result_ma->num_rows > 0) {
-                    while ($row_ma = $result_ma->fetch_assoc()) {
-                        $mucgiam = $row_ma['mucgiam'];
-                        $status = $row_ma['status'];
-                    }
-                }
-                if ($status == 1) {
-                    $tiengiam = $mucgiam;
-                } else {
-                    $tiengiam = $mucgiam * $songay * $price_hs / 100;
                 }
             }
         }
@@ -64,7 +38,7 @@ if (isset($_GET["mahoadon"])) {
                     <h3 class="fs-3 fw-bold">Thanh toán</h3>
                     <p class="py-2">Vui lòng lựa chọn phương thức thanh toán</p>
                 </div>
-                <form action="">
+                <form action="" method="post">
                     <label for="phuongthuc1" class="d-flex align-items-center mb-4 py-3 inputs" style="background-color: #f4f4f4;">
                         <input type="radio" name="phuongthuc" id="phuongthuc1" class="ms-4 me-3" value="" style="cursor: pointer;" required>
                         <div>
@@ -137,6 +111,21 @@ if (isset($_GET["mahoadon"])) {
                     </label>
                     <button name="thanhtoanngay" type="submit" class="btn-thanhtoan" style="background-image: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);background-size: 500% auto;width:189px;height:56px;border:none;color:white;font-weight:bold;">Thanh toán ngay</button>
                 </form>
+                <?php
+                if (isset($_POST['thanhtoanngay'])) {
+
+                    $sql_tt = "UPDATE donhang SET trangthai=2 WHERE mahoadon= '$mahoadon'";
+                    $result_tt = $conn->query($sql_tt);
+                    if ($result_tt) {
+                        echo '
+                                    <script>
+                                        alert("thanh toán thành công");
+                                        location.href="order.php?mahoadon=' . $mahoadon . '"
+                                    </script>
+                                ';
+                    }
+                }
+                ?>
             </div>
             <div class="col-lg-2 col-md-1"></div>
             <div class="col-md-5 col-lg-4 col-xs-12 d-none d-md-block">
@@ -184,38 +173,7 @@ if (isset($_GET["mahoadon"])) {
 
 
                                 </div>
-                                <div class="title-detail mt-3 border-bottom ">
-                                    <div class="title-checkin-checkout mt-3 mb-3 d-flex justify-content-between">
-                                        <div class="">
-                                            <span class="pe-2">Giá thuê: <?php echo $songay ?> Đêm </span>
-                                        </div>
 
-                                        <div class="price">
-                                            <span><?php echo number_format($songay * $price_hs) ?>đ</span>
-                                        </div>
-                                    </div>
-                                    <div class="title-checkin-checkout mt-3 mb-3 d-flex justify-content-between">
-                                        <div class="">
-                                            <span class="pe-2">Phí dịch vụ</span>
-                                        </div>
-                                        <div class="price">
-                                            <span><?php echo number_format($phidichvu) ?>đ</span>
-                                        </div>
-                                    </div>
-                                    <?php
-                                    if (!empty($magiamgia)) {
-                                        echo '<div class="title-checkin-checkout mt-3 mb-3 d-flex justify-content-between">
-                                            <div class="">
-                                                <span class="pe-2">Khuyến mãi</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>' . number_format($tiengiam) . 'đ</span>
-                                            </div>
-                                        </div>';
-                                    }
-                                    ?>
-
-                                </div>
                                 <div class="title-detail mt-3 border-bottom ">
                                     <div class="title-checkin-checkout mt-3 mb-3 d-flex justify-content-between">
                                         <div class="fw-bold">

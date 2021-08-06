@@ -513,12 +513,12 @@ include 'header.php';
               $id_user = $row_mess['id_user'];
               $sql_user = "SELECT avatar FROM user where id=$id_user";
               $result_user = $conn->query($sql_user);
-              if($result_user->num_rows > 0){
-                while ($row_user = $result_user->fetch_assoc()){
+              if ($result_user->num_rows > 0) {
+                while ($row_user = $result_user->fetch_assoc()) {
                   $avatar = $row_user['avatar'];
                 }
               }
-              
+
               $sql_meet = "SELECT * FROM message WHERE id_user=$id_user LIMIT 1";
               $result_meet = $conn->query($sql_meet);
               if ($result_meet->num_rows > 0) {
@@ -553,6 +553,7 @@ include 'header.php';
               while ($row_meet = $result_meet->fetch_assoc()) {
                 $id_message = $row_meet['id'];
                 $name = $row_meet['name'];
+                $email = $row_meet['email'];
                 $message = $row_meet['message'];
                 $status = $row_meet['status'];
                 if ($status == 0) {

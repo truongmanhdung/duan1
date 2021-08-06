@@ -144,7 +144,7 @@
                                 </div>';
                             } else if ($trangthai == 1) {
                                 echo ' <div class="px-5 thanhtoanngay">
-                                    <a href=""  class="btn btn-danger">Thanh toán</a>
+                                    <a href="xacnhantt.php?mahoadon=' . $mahoadon . '"  class="btn btn-danger">Thanh toán</a>
                                     <a href="huydatphong.php?mahoadon=' . $mahoadon . '" onclick="return confirm(\'Bạn có muốn hủy đặt phòng không?\')"  class="mx-5 btn btn-danger">Hủy đặt phòng</a>
                                 </div>';
                             } else if ($trangthai == 2) {
@@ -235,7 +235,7 @@
                                         </div>';
                                     } else if ($trangthai == 1) {
                                         echo ' <div class="px-5 thanhtoanngay">
-                                            <a href="" class=" btn btn-danger">Thanh toán</a>
+                                        <a href="xacnhantt.php?mahoadon=' . $mahoadon . '"  class="btn btn-danger">Thanh toán</a>
                                             <a href="huydatphong.php?mahoadon=' . $mahoadon . '" onclick="return confirm(\'Bạn có muốn hủy đặt phòng không?\')"  class="mx-5 btn btn-danger">Hủy đặt phòng</a>
                                         </div>';
                                     } else if ($trangthai == 2) {

@@ -217,7 +217,7 @@ if (isset($_GET['mahoadon'])) {
                                                                                     style="margin: 0px auto; padding: 0px; box-sizing: border-box;">
                                                                                     <td
                                                                                         style="margin: 0px auto; padding: 7px 0px; box-sizing: border-box; width: 497px; font-size: 13px; color: rgb(153, 153, 153); text-align: center;">
-                                                                                        <a href="http://localhost:81/duan1/xacnhan.php?mahoadon=' . $mahoadon . '"
+                                                                                        <a href="http://localhost:81/duan1/xacnhantt.php?mahoadon=' . $mahoadon . '"
                                                                                             target="_blank"
                                                                                             style="margin: 0px auto; padding: 0px 20px; box-sizing: border-box; color: rgb(255, 255, 255); text-decoration-line: none; display: block; line-height: 50px; width: 347.891px; min-height: 50px; border-radius: 4px; border: 0px; font-weight: bold; font-size: 18px; background-color: rgb(244, 87, 16);">Thanh
                                                                                             toán ngay</a>

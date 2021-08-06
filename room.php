@@ -371,9 +371,9 @@ if ($result_chitiet->num_rows > 0) {
                                     $avatar_rep = $row_user_rep['avatar'];
                                 }
                             }
-                            ?>
+                            ?>  
                                 <div class="d-flex align-items-center comment-show ms-5 mt-4">
-                                <img src="./public/image/user/<?= $avatar_rep ?>" width="48" height="48" style="object-fit: cover" class="rounded-circle">
+                                    <img src="./public/image/user/<?= $avatar_rep ?>" width="48" height="48" style="object-fit: cover" class="rounded-circle">
                                     <div class=" mx-2 border-comment comment-show bg-light">
                                         <strong><?= $name_user_rep ?></strong>
                                         <p><?= $repcomment ?></p>
@@ -417,9 +417,34 @@ if ($result_chitiet->num_rows > 0) {
                                         </script>
                                     </div>
                                 </div>
+                                
                             <?php
                         }
                     }
+                   
+                    $sql_repadmin = "SELECT * FROM admin_rep WHERE id_comment = $id_comment";
+                    $result_adminrep = $conn->query($sql_repadmin);
+                    if($result_adminrep->num_rows > 0){
+                        while ($row_adminrep = $result_adminrep->fetch_assoc()){
+                            $admin_repcomment = $row_adminrep['comment'];
+                            $time_admin = $row_adminrep['time'];
+                            ?>
+                            <div class="d-flex align-items-center comment-show ms-5 mt-4">
+                                <img src="./public/image/user/user.png" width="48" height="48" style="object-fit: cover" class="rounded-circle">
+                                    <div class=" mx-2 border-comment comment-show bg-light">
+                                        <strong>Admin</strong>
+                                        <p><?= $admin_repcomment ?></p>
+                                    </div>
+                                    <div class="ms-2 comment-icon">
+                                        <span>Đã trả lời <?= $name_user ?></span>
+                                        <i class="fas fa-circle" style="font-size: 6px"></i>
+                                        <span style="font-size: 13.28px;"><?= $time_rep ?></span>
+                                    </div>
+                                </div>
+                            <?php 
+                        }
+                    }
+            
                     ?>
                     </div>
                     <?php
@@ -441,7 +466,7 @@ if ($result_chitiet->num_rows > 0) {
             </div>';
         if (isset($_POST['submit_comment'])) {
             $comment1 = $_POST['comment1'];
-            $sql_comment1 = "INSERT INTO comment VALUES (null,$id,$id_hs,'$comment1',0,0,'$today')";
+            $sql_comment1 = "INSERT INTO comment VALUES (null,$id,$id_hs,'$comment1',0,0,0,'$today')";
             $result_comment1 = $conn->query($sql_comment1);
             if ($result_comment1) {
                 echo '

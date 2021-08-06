@@ -46,7 +46,15 @@ include 'header.php';
                     $sophong = $row_hs['sophong'];
                     $danhgia = $row_hs['danhgia'];
                     $image = $row_hs['image'];
-                    $love = $row_hs['love'];
+                    $sql_love = "SELECT * FROM favourite WHERE id_user = $id and id_khachsan=$id_hs";
+                    $result_love = $conn->query($sql_love);
+                    if ($result_love->num_rows > 0) {
+                        while ($row_love = $result_love->fetch_assoc()) {
+                            $love = $row_love['status'];
+                        }
+                    } else {
+                        $love = 0;
+                    }
                     if ($love === "1") {
                         echo '<div class="col-6 col-md-2-4 product my-3">
                         <div class="box-shadow">';

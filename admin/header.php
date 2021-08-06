@@ -219,8 +219,8 @@
                                 <i class="fas fa-map-marker-alt"></i>Khu vực</a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Comment</a>
+                            <a class="js-arrow" href="comment.php">
+                                <i class="fas fa-copy"></i>Bình luận</a>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-desktop"></i>UI Elements</a>
